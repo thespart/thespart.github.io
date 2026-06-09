@@ -1,5 +1,5 @@
 const stuffColumn = document.querySelector("#info #tab ul");
-const kolvostuff = 9;
+const kolvostuff = 10;
 function getImages(amount) {
     const content = [];
 
@@ -11,10 +11,10 @@ function getImages(amount) {
 function addColumn(content) {
 
     const elementli = document.createElement("li");
-    const elementDate = document.createElement('p');
+    const elementDate = document.createElement('a');
+    elementDate.href = "./gifwatcher.html"
     elementDate.textContent = content.date;
     elementDate.id = "date";
-    elementli.className = "gif-image";
 
     const elementimg = document.createElement("img");
     elementimg.src = content.image;
@@ -26,5 +26,5 @@ function addColumn(content) {
 
 for (let i=0; i<kolvostuff; i++) {
     const content = getImages(kolvostuff);
-    addColumn({image: content[i], date: "XX.XX.XXXX"})
+    addColumn({image: content[i], date: "watch"})
 }

@@ -109,7 +109,7 @@ body {
 }
 #info #content li {
     width: 120px;
-    height: 120px;
+    height: 140px;
     padding: 0 0 30;
 }
 
@@ -122,7 +122,7 @@ body {
 }
 p {
     font-family: "Consolas";
-    src: url('mySite/content/consolas.ttf') format("ttf");
+    src: url('./content/consolas.ttf') format("ttf");
     font-size: 14px;
     color: rgb(65, 115, 128);
     margin: 20px 5px;
@@ -133,7 +133,6 @@ p {
     color: rgb(112, 161, 173);
     margin: 5px;
 }
-
 h1 {
     -webkit-text-stroke: 1px rgba(132, 165, 165, 0.623);
     font-family: "Consolas";
@@ -187,14 +186,6 @@ h1 {
     position: absolute;
     transform:translate(-50%, 10%);
     left: 50%;
-}
-.gif-image {
-    animation-play-state: paused; 
-}
-
-/* Play when hovered */
-.gif-image:hover {
-    animation-play-state: running; 
 }
 #info #tab #content a {
     font-size: 14px;

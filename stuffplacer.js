@@ -25,5 +25,5 @@ function addColumn(content, i) {
 }
 const content = getImages(kolvostuff);
 for (let i=0; i<kolvostuff; i++) {
-    addColumn({image: content[i], i})
+    addColumn({image: content[i]}, i)
 }

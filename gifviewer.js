@@ -1,7 +1,9 @@
 const stuffColumn = document.querySelector("#others ul");
 const gifviewer = document.querySelector("#gif img");
 const divdesc = document.querySelector("#description p");
+const blankscreen = document.querySelector("#black");
 const kolvostuff = 10;
+blankscreen.classList.add("unblack");
 
 const descriptions = {
     1: "i have a friend named Cu6e and i really wanted to make gif with him. So one day i asked for his permission to use his icon and after a week of thinking i ended up making that. I made 2 shots of my real life figure of wrinkler and then animated everything in flash 8",
@@ -32,7 +34,21 @@ function addColumn(content, i) {
     elementli.addEventListener("pointerenter", () => {
         gifviewer.src = "./content/" + (i+1) + ".gif";
         divdesc.textContent = descriptions[i+1];
-    })
+        if (gifviewer.complete) {
+            console.log(gifviewer.src, "loaded");
+            blankscreen.classList.add("unblack");
+            blankscreen.classList.remove("doblack");
+        } else {
+            divdesc.textContent = "loading";
+            blankscreen.classList.remove("unblack");
+                blankscreen.classList.add("doblack")
+            gifviewer.addEventListener('load', () => {
+                divdesc.textContent = descriptions[i+1];
+                blankscreen.classList.add("unblack");
+                blankscreen.classList.remove("doblack")
+            });
+        }
+    });
     const elementimg = document.createElement("img");
     elementimg.alt = "cool gif"
     elementimg.src = content.image;

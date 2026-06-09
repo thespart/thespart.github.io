@@ -34,6 +34,22 @@ p {
     padding: 20px;
     background-color: rgb(46, 46, 46);
 }
+#black {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 46%;
+    left: 47%;
+    width: 500px;
+    height: 500px;
+    padding: 20px;
+    background-color: rgb(46, 46, 46);
+}
+.unblack {
+    opacity: 0;
+}
+.doblack {
+    opacity: 100%;
+}
 #description {
     width: 600px;
     height: 100px;

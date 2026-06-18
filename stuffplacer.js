@@ -1,5 +1,5 @@
 const stuffColumn = document.querySelector("#info #tab ul");
-const kolvostuff = 10;
+const kolvostuff = 16;
 function getImages(amount) {
     const content = [];
 

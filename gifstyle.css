@@ -24,6 +24,37 @@ p {
     height: 600px;
     position: relative;
 }
+#gif p {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 80%;
+    left: 55%;
+    width: 500px;
+    height: 500px;
+    padding: 50px;
+    font-size: 100px;
+}
+#buttons {
+    width: 600px;
+    display: grid;
+    grid-template-columns: 300px 300px;
+    color: rgb(82, 82, 82);
+}
+
+input[type="button"]:hover {
+  background-color: rgb(172, 172, 172);
+  cursor: pointer;
+}
+
+input[type="button"] {
+  background-color: #969696;
+  color: #000000;
+  font-size: 20px;
+  padding: 10px 20px;
+  border: black solid 3px;
+  z-index: 100;
+}
+
 #gif img {
     position: absolute;
     transform: translate(-50%, -50%);
@@ -60,7 +91,7 @@ p {
     top: 0;
     right: 0;
     width: 240px;
-    height: 720px;
+    height: 790px;
 }
 #others ul {
     display: grid;
@@ -80,4 +111,8 @@ img {
     height: 50px;
     padding: 5px;
     background-color: rgb(92, 92, 92);
+}
+
+#others ul li:hover {
+    cursor:help;
 }

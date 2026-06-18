@@ -2,7 +2,13 @@ const stuffColumn = document.querySelector("#others ul");
 const gifviewer = document.querySelector("#gif img");
 const divdesc = document.querySelector("#description p");
 const blankscreen = document.querySelector("#black");
-const kolvostuff = 10;
+const loadingtext = document.querySelector("#gif p");
+const leftbutton = document.querySelector("#buttons #left");
+const rightbutton = document.querySelector("#buttons #right");
+const kolvostuff = 16;
+
+let latest = 0;
+
 blankscreen.classList.add("unblack");
 
 const descriptions = {
@@ -16,6 +22,41 @@ const descriptions = {
     8: "CHICHILLA JUMPING AND HAVING FUN :DDDDDD",
     9: "car crossing infinity greenfields",
     10: "zeroud having fun on dirigablya",
+    11: "i wanted to make animation where my OC running with portal gun, but krita weren't great tool for that. 2022 btw",
+    12: "i dont really like this, i mean. it was supposed to look way better than this",
+    13: "my first gif made for subcriber. my channel had 10 subcribers at the moment and i had an idea to make a gif for that subcriber. it was themed 'labyrinth of faun' or idk i dont remember",
+    14: "my second commision for subcriber. basically zeroud (guy eating mushroom), cu6e and markys (guys at bg). you can remember them in others gifs aswell",
+    15: "cat eating cat. life is strange thing",
+    16: "my first animation made in after effects cs6, loved that so much i made gif of this",
+}
+
+function showGIF(i) {
+    latest = i;
+    gifviewer.src = "./content/" + (i+1) + ".gif";
+        divdesc.textContent = descriptions[i+1];
+        if (gifviewer.complete) {
+            console.log(gifviewer.src, "loaded");
+            loadingscreen(true);
+        } else {
+            loadingscreen(false);
+            gifviewer.addEventListener('load', () => {
+                loadingscreen(true);
+            });
+        }
+}
+
+function loadingscreen(loaded) {
+    if (loaded == true) {
+        blankscreen.classList.add("unblack");
+        blankscreen.classList.remove("doblack");
+        loadingtext.classList.add("unblack");
+        loadingtext.classList.remove("doblack");
+    } else {
+        blankscreen.classList.remove("unblack");
+        blankscreen.classList.add("doblack");
+        loadingtext.classList.remove("unblack");
+        loadingtext.classList.add("doblack");
+    }
 }
 
 function getImages(amount, format) {
@@ -32,22 +73,7 @@ function addColumn(content, i) {
     const elementli = document.createElement("li");
 
     elementli.addEventListener("pointerenter", () => {
-        gifviewer.src = "./content/" + (i+1) + ".gif";
-        divdesc.textContent = descriptions[i+1];
-        if (gifviewer.complete) {
-            console.log(gifviewer.src, "loaded");
-            blankscreen.classList.add("unblack");
-            blankscreen.classList.remove("doblack");
-        } else {
-            divdesc.textContent = "loading";
-            blankscreen.classList.remove("unblack");
-                blankscreen.classList.add("doblack")
-            gifviewer.addEventListener('load', () => {
-                divdesc.textContent = descriptions[i+1];
-                blankscreen.classList.add("unblack");
-                blankscreen.classList.remove("doblack")
-            });
-        }
+        showGIF(i);
     });
     const elementimg = document.createElement("img");
     elementimg.alt = "cool gif"
@@ -60,3 +86,23 @@ const preview = getImages(kolvostuff, "jpeg");
 for (let i=0; i<kolvostuff; i++) {
     addColumn({image: preview[i]}, i);
 }
+
+rightbutton.addEventListener("click", () => {
+    if (latest > 0 && latest <= kolvostuff) {
+        latest++
+        showGIF(latest);
+    } else {
+        latest = 1;
+    }
+    console.log(latest)
+})
+
+leftbutton.addEventListener("click", () => {
+    if (latest > 0 && latest <= kolvostuff) {
+        latest--
+        showGIF(latest);
+    } else {
+        latest = 1;
+    }
+    console.log(latest)
+})

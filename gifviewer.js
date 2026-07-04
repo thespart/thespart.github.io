@@ -5,9 +5,9 @@ const blankscreen = document.querySelector("#black");
 const loadingtext = document.querySelector("#gif p");
 const leftbutton = document.querySelector("#buttons #left");
 const rightbutton = document.querySelector("#buttons #right");
-const kolvostuff = 16;
+const kolvostuff = 17;
 
-let latest = 0;
+let latest = Number(localStorage.getItem("choose"));;
 
 blankscreen.classList.add("unblack");
 
@@ -28,12 +28,14 @@ const descriptions = {
     14: "my second commision for subcriber. basically zeroud (guy eating mushroom), cu6e and markys (guys at bg). you can remember them in others gifs aswell",
     15: "cat eating cat. life is strange thing",
     16: "my first animation made in after effects cs6, loved that so much i made gif of this",
+    17: "moment from my animation, you can watch it in my Newgrounds!",
 }
 
+showGIF(latest);
 function showGIF(i) {
     latest = i;
-    gifviewer.src = "./content/" + (i+1) + ".gif";
-        divdesc.textContent = descriptions[i+1];
+    gifviewer.src = "./content/" + (latest+1) + ".gif";
+        divdesc.textContent = descriptions[latest+1];
         if (gifviewer.complete) {
             console.log(gifviewer.src, "loaded");
             loadingscreen(true);
@@ -44,7 +46,7 @@ function showGIF(i) {
             });
         }
 }
-
+// spasi
 function loadingscreen(loaded) {
     if (loaded == true) {
         blankscreen.classList.add("unblack");
@@ -88,21 +90,23 @@ for (let i=0; i<kolvostuff; i++) {
 }
 
 rightbutton.addEventListener("click", () => {
-    if (latest > 0 && latest <= kolvostuff) {
+    if (latest >= 0 && latest < kolvostuff-1) {
         latest++
         showGIF(latest);
     } else {
-        latest = 1;
+        latest = 0;
+        showGIF(latest);
     }
     console.log(latest)
 })
 
 leftbutton.addEventListener("click", () => {
-    if (latest > 0 && latest <= kolvostuff) {
+    if (latest > 0 && latest <= kolvostuff-1) {
         latest--
         showGIF(latest);
     } else {
-        latest = 1;
+        latest = kolvostuff-1;
+        showGIF(latest);
     }
     console.log(latest)
 })

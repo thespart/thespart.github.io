@@ -1,5 +1,9 @@
 const stuffColumn = document.querySelector("#info #tab ul");
-const kolvostuff = 16;
+const kolvostuff = 17;
+
+const giftowatch = localStorage.getItem("choose") || 0;
+
+
 function getImages(amount) {
     const content = [];
 
@@ -12,9 +16,12 @@ function addColumn(content, i) {
 
     const elementli = document.createElement("li");
     const elementDate = document.createElement('a');
-    elementDate.href = "./gifwatcher.html"
-    elementDate.textContent = "watch"
-    elementDate.id = i;
+    elementDate.href = "./gifwatcher.html";
+    elementDate.textContent = "watch";
+
+    elementDate.addEventListener('click', () => {
+        localStorage.setItem("choose", String(i));
+    })
 
     const elementimg = document.createElement("img");
     elementimg.src = content.image;
@@ -25,5 +32,5 @@ function addColumn(content, i) {
 }
 const content = getImages(kolvostuff);
 for (let i=0; i<kolvostuff; i++) {
-    addColumn({image: content[i]}, i)
+    addColumn({image: content[i]}, i);
 }

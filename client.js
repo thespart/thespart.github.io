@@ -15,6 +15,7 @@ function addColumn(content) {
     elementli.appendChild(elementDate);
     newsColumn.appendChild(elementli);
 }
+addColumn({text: "водитель маршрутки", date: "05.07.2026"});
 addColumn({text: "added new game (its still in beta), andddd in 2 days im going to have birthday :DDDDD!!!!! im going to be XX yo", date: "26.06.2026"})
 addColumn({text: "after a while mint chat has died. very sad. also check out my new gifs", date: "19.06.2026"})
 addColumn({text: "added info to every gif now you can see on what drug i've been while making them", date: "09.06.2026"})

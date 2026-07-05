@@ -8,7 +8,7 @@ function getImages(amount) {
     const content = [];
 
     for (let i=0; i<amount; i++) {
-        content.push("../content/" + (i+1) + ".jpeg");
+        content.push("/content/" + (i+1) + ".jpeg");
     }
     return content;
 }
@@ -16,7 +16,7 @@ function addColumn(content, i) {
 
     const elementli = document.createElement("li");
     const elementDate = document.createElement('a');
-    elementDate.href = "../gifwatcher.html";
+    elementDate.href = "/gifwatcher.html";
     elementDate.textContent = "watch";
 
     elementDate.addEventListener('click', () => {

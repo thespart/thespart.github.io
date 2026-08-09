@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html lang="en ru">
+    <head>
+        <meta charset="UTF-8">
+        <script defer src="../main.js"></script>
+        <link rel="icon" href="../content/favicon.png">
+        <link rel="stylesheet" href="../style.css">
+        <title>TheSpart'z ArtHaus</title>
+    </head>
+
+    <body>
+        <div class="separator"></div>
+        <header>
+            <div id="background"></div>
+            <nav id="buttons">
+                <li id="lefty" class="opened"><a class="goldtext" href="../about/">about</a></li>
+                <li><a class="goldtext" href="../gallery/">gallery</a></li>
+                <li><a class="goldtext" href="../animation/">animation</a></li>
+                <li><a class="goldtext" href="../contact/">contact</a></li>
+                <li><a class="goldtext" href="../games/">games</a></li>
+            </nav>
+            <div id="maininfo">
+                <div id="logo">
+                    <h1><a href="../index.html">thespart<span style="font-size: 50px; color: rgb(69, 109, 73);">.ru</span></a></h1>
+                    <div id="separator">
+                        <canvas></canvas>
+                    </div>
+                    <div id="megalogo">
+                        <img src="../content/favicon.png" draggable="false" alt="logo">
+                    </div>
+                </div>
+                <div id="otherstuff">
+                    <h2><i>"best website evr"</i></h2>
+                </div>
+            </div>
+
+        </header>
+        <style>
+            body main {
+                margin: 0 10px;
+                display: contents;
+                & #leftpart {
+                    margin: 0 10px;
+                }
+                & #leftpart > div {
+                    height: 150px;
+                    margin-bottom: 10px;
+                    border: 3px solid #00000066;
+                    position: relative;
+                    & h1 {
+                        text-shadow: 0px 0px 10px black;
+                        -webkit-text-stroke: 1px;
+                        -webkit-text-stroke-color: black;
+                        display: block;
+                        margin: 0px;
+                        padding: 0;
+                        text-align: left;
+                        width: 500px;
+                        height: 5vw;
+                        position: absolute;
+                        font-family: AntonSC;
+                        font-size: 50px;
+                        bottom: 10px;
+                        left: 10px;
+                    }
+                    & button {
+                        font-family: UbuntuMono;
+                        filter: grayscale(1);
+                        position: absolute;
+                        font-size: 50px;
+                        bottom: 10px;
+                        right: 10px;
+                        width: 200px;
+                        height: 60px;
+                    }
+                    & div {
+                    height: 100%;
+                    width: 80%;
+                    mask-image: radial-gradient(circle, black 60%, transparent 100%);
+                    -webkit-mask-image: linear-gradient(90deg, black 65%, transparent 100%);
+                }
+            }
+            #physics {
+                background: black;;
+                color: #FFB100;
+                & div {
+                background: url("../content/banner1.jpg");
+                }
+            }
+            #tennis {
+                background:black;
+                color: #FFA5EE;
+                & div {
+                background: url("../content/banner2.jpg");
+            }
+        </style>
+        <main>
+            <section id="leftpart"> 
+                <h1 id="declarator">⠀ games </h1>
+                <div id="physics">
+                      <li>
+                         <button id="btn1" class="button" type="button">play</button>
+                     </li>
+                    <div>
+                        <h1>OmegaPhysics</h1>
+                    </div>
+                </div>
+                <div id="tennis">
+                     <li>
+                         <button id="btn2" class="button" type="button">play</button>
+                     </li>
+                    <div>
+                         <h1>Tennis Ball</h1>
+                    </div>
+                </div> 
+                <script type="text/javascript" charset="utf-8">
+                    const button1 = document.getElementById("btn1");
+                    const button2 = document.getElementById("btn2");
+                    button1.addEventListener("click", () => {
+                        window.location.href = "https://thespart.ru/OmegaPhysics"
+                    })
+                    button2.addEventListener("click", () => {
+                        window.location.href = "https://thespart.ru/tennisball"
+                    })
+                </script>
+            </section>
+        </main>
+        <div class="separator"></div>
+        <footer>
+            <h2>beee</h2>
+        </footer>
+    </body>
+</html>

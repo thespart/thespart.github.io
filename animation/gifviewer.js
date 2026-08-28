@@ -1,15 +1,16 @@
 const stuffColumn = document.querySelector("#others ul");
-const gifviewer = document.querySelector("#gif img");
-const divdesc = document.querySelector("#description p");
+const gifviewer = document.querySelector("#gif");
+const divdesc = document.querySelector("#description");
 const blankscreen = document.querySelector("#black");
 const loadingtext = document.querySelector("#gif p");
-const leftbutton = document.querySelector("#buttons #left");
-const rightbutton = document.querySelector("#buttons #right");
+const leftbutton = document.querySelector("#left");
+const rightbutton = document.querySelector("#right");
+const whitenoise = document.querySelector("#gif[src='/content/white.gif']");
+const countdiv = document.querySelector("#count");
+const hash = window.location.hash;
 const kolvostuff = 20;
+let latest = Number(hash.replace("#", ""))-1 || 0;
 
-let latest = Number(localStorage.getItem("choose"));;
-
-blankscreen.classList.add("unblack");
 
 const descriptions = {
     1: "i have a friend named Cu6e and i really wanted to make gif with him. So one day i asked for his permission to use his icon and after a week of thinking i ended up making that. I made 2 shots of my real life figure of wrinkler and then animated everything in flash 8",
@@ -36,32 +37,24 @@ const descriptions = {
 
 showGIF(latest);
 function showGIF(i) {
+    countdiv.textContent = i+1;
     latest = i;
+    window.location.hash = i+1;
+    setTimeout(() => {
+        gifviewer.classList.add("playBlink");
+        whitenoise.classList.add("playWhiteNoise");
+    }, 10);
+    gifviewer.classList.remove("playBlink");
+    whitenoise.classList.remove("playWhiteNoise");
+    
     gifviewer.src = "./content/" + (latest+1) + ".gif";
         divdesc.textContent = descriptions[latest+1];
         if (gifviewer.complete) {
             console.log(gifviewer.src, "loaded");
-            loadingscreen(true);
         } else {
-            loadingscreen(false);
             gifviewer.addEventListener('load', () => {
-                loadingscreen(true);
             });
         }
-}
-// spasi
-function loadingscreen(loaded) {
-    if (loaded == true) {
-        blankscreen.classList.add("unblack");
-        blankscreen.classList.remove("doblack");
-        loadingtext.classList.add("unblack");
-        loadingtext.classList.remove("doblack");
-    } else {
-        blankscreen.classList.remove("unblack");
-        blankscreen.classList.add("doblack");
-        loadingtext.classList.remove("unblack");
-        loadingtext.classList.add("doblack");
-    }
 }
 
 function getImages(amount, format) {
@@ -77,7 +70,7 @@ function addColumn(content, i) {
 
     const elementli = document.createElement("li");
 
-    elementli.addEventListener("pointerenter", () => {
+    elementli.addEventListener("click", () => {
         showGIF(i);
     });
     const elementimg = document.createElement("img");
@@ -86,7 +79,7 @@ function addColumn(content, i) {
     elementli.appendChild(elementimg);
     stuffColumn.appendChild(elementli);
 }
-const preview = getImages(kolvostuff, "jpeg");
+const preview = getImages(kolvostuff, "gif");
 
 for (let i=0; i<kolvostuff; i++) {
     addColumn({image: preview[i]}, i);
@@ -113,3 +106,25 @@ leftbutton.addEventListener("click", () => {
     }
     console.log(latest)
 })
+
+document.querySelector("#tv").addEventListener("pointerenter", () => {
+    divdesc.classList.remove("playFadeout");
+    setTimeout(() => {
+        divdesc.classList.add("playFadein");
+    }, 5);
+    
+})
+
+document.querySelector("#tv").addEventListener("pointerleave", () => {
+    divdesc.classList.remove("playFadein");
+    setTimeout(() => {
+        divdesc.classList.add("playFadeout");
+    }, 5);
+})
+
+document.addEventListener("readystatechange", function () {
+  if (document.readyState === "complete") {
+    // Initialize script
+    const f = new FreezeImages({noCss: false, smoothing: false});
+  }
+});

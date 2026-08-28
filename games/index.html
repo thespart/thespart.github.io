@@ -3,7 +3,16 @@
 <html lang="en ru">
     <head>
         <meta charset="UTF-8">
-        <script defer src="../main.js"></script>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-KRHM8L3TNT"></script>
+        <script>
+           window.dataLayer = window.dataLayer || [];
+           function gtag(){dataLayer.push(arguments);}
+           gtag('js', new Date());
+           gtag('config', 'G-KRHM8L3TNT');
+        </script>
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script defer src="../main.js" type="module"></script>
         <link rel="icon" href="../content/favicon.png">
         <link rel="stylesheet" href="../style.css">
         <title>TheSpart'z ArtHaus</title>
@@ -14,7 +23,7 @@
         <header>
             <div id="background"></div>
             <nav id="buttons">
-                <li id="lefty" class="opened"><a class="goldtext" href="../about/">about</a></li>
+                <li id="lefty" class="opened"><a class="goldtext" href="/">about</a></li>
                 <li><a class="goldtext" href="../gallery/">gallery</a></li>
                 <li><a class="goldtext" href="../animation/">animation</a></li>
                 <li><a class="goldtext" href="../contact/">contact</a></li>
@@ -24,10 +33,29 @@
                 <div id="logo">
                     <h1><a href="../index.html">thespart<span style="font-size: 50px; color: rgb(69, 109, 73);">.ru</span></a></h1>
                     <div id="separator">
-                        <canvas></canvas>
+                        <nav id="socials">
+                         <a href="https://gdbrowser.com/u/TheSpart" target="_blank" rel="noopener noreferrer">
+                             <img src="/content/gd.png" alt="gd" />
+                         </a>
+                         <a href="https://spartthekot.newgrounds.com" target="_blank" rel="noopener noreferrer">
+                             <img src="/content/ng.png" alt="ng" />
+                         </a>
+                         <a href="https://tenor.com/users/thespart" target="_blank" rel="noopener noreferrer">
+                             <img src="/content/tenor.png" alt="tenor" />
+                         </a>
+                         <a href="https://github.com/thespart" target="_blank" rel="noopener noreferrer">
+                             <img src="/content/github.png" alt="github" />
+                         </a>
+                     </nav>
+                       <h2 class="background" id="h2bg">my socials</h2>
+                        <div class="background"></div>
                     </div>
                     <div id="megalogo">
                         <img src="../content/favicon.png" draggable="false" alt="logo">
+                        <div id="triangle" class="triangle"></div>      
+                        <div id="quote">
+                            <h3></h3>
+                        </div>
                     </div>
                 </div>
                 <div id="otherstuff">
@@ -50,14 +78,14 @@
                     position: relative;
                     & h1 {
                         text-shadow: 0px 0px 10px black;
-                        -webkit-text-stroke: 1px;
+                        -webkit-text-stroke: 0.5px;
                         -webkit-text-stroke-color: black;
                         display: block;
                         margin: 0px;
                         padding: 0;
                         text-align: left;
                         width: 500px;
-                        height: 5vw;
+                        height: 60px;
                         position: absolute;
                         font-family: AntonSC;
                         font-size: 50px;
@@ -93,10 +121,12 @@
                 color: #FFA5EE;
                 & div {
                 background: url("../content/banner2.jpg");
+                }
             }
+        }
         </style>
         <main>
-            <section id="leftpart"> 
+            <section class="games" id="leftpart">
                 <h1 id="declarator">⠀ games </h1>
                 <div id="physics">
                       <li>

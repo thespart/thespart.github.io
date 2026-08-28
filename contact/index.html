@@ -2,9 +2,18 @@
 
 <html lang="en ru">
     <head>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-KRHM8L3TNT"></script>
+        <script>
+           window.dataLayer = window.dataLayer || [];
+           function gtag(){dataLayer.push(arguments);}
+           gtag('js', new Date());
+           gtag('config', 'G-KRHM8L3TNT');
+        </script>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" href="../content/favicon.png">
-        <script defer src="../main.js"></script>
+        <script defer src="../main.js" type="module"></script>
         <link rel="stylesheet" href="../style.css">
         <title>TheSpart'z ArtHaus</title>
     </head>
@@ -14,7 +23,7 @@
         <header>
             <div id="background"></div>
             <nav id="buttons">
-                <li id="lefty"><a class="goldtext" href="../about/">about</a></li>
+                <li id="lefty"><a class="goldtext" href="/">about</a></li>
                 <li><a class="goldtext" href="../gallery/">gallery</a></li>
                 <li><a class="goldtext" href="../animation/">animation</a></li>
                 <li class="opened"><a class="goldtext" href="../contact/">contact</a></li>
@@ -22,12 +31,25 @@
             </nav>
             <div id="maininfo">
                 <div id="logo">
-                    <h1><a href="../index.html">thespart<span style="font-size: 50px; color: rgb(69, 109, 73);">.ru</span></a></h1>
+                    <h1><a href="/">thespart<span style="font-size: 50px; color: rgb(69, 109, 73);">.ru</span></a></h1>
                     <div id="separator">
-                        <canvas></canvas>
+                         <nav id="socials">
+                            <a href="mailto:diesspart@gmail.com?body=это я evil spart я пришол тебя not убивать&subject=a">
+                                <img src="/content/gmaol.png" alt="gmail" />      
+                            </a>
+                            <a href="https://t.me/The_Spart" target="_blank" rel="noopener noreferrer">
+                                <img src="/content/tg.png" alt="tg"/>
+                            </a>
+                        </nav>
+                          <h2 class="background" id="h2bg">contact me</h2>
+                         <div class="background"></div>
                     </div>
                     <div id="megalogo">
                         <img src="../content/favicon.png" draggable="false" alt="logo">
+                        <div id="triangle" class="triangle"></div>
+                        <div id="quote">                      
+                            <h3></h3>
+                        </div>
                     </div>
                 </div>
                 <div id="otherstuff">
@@ -43,8 +65,8 @@
                     <h1 id="header"> Contact </h1>
                     <div class="separator"></div>
                     <h2>here it is;
-                        <br> <a href="mailto:diesspart@gmail.com?body=это я evil s[part] я пришол тебя убивать&subject=b"> diesspart@gmail.com </a>
-                        <br> <a href="https://t.me/The_Spart"> The_Spart (telegram)</a>
+                        <br> <a href="mailto:diesspart@gmail.com?body=это я evil spart я пришол тебя убивать&subject=b"> diesspart@gmail.com </a>
+                        <br> <a href="https://t.me/The_Spart" target="_blank" rel="noopener noreferrer"> The_Spart (telegram)</a>
                     </h2>
                 </div>
             </section>

@@ -1,0 +1,83 @@
+//https://github.com/bechnokid/simple-freeze
+//thanks
+class FreezeImages {
+  constructor(options = {}) {
+    // Set default params
+    this.selector = options.selector || "freeze"
+    this.imgCls = "ff-img";
+    this.canvasCls = "ff-canvas";
+    this.hover = (options.hover === true || options.hover === "true") ? true : false;
+    this.noCSS = (options.no_css === true || options.hover === "true") ? true : false;
+    this.smoothing = (options.smoothing === false) ? false : true;
+
+    // Finds all images with selector class and within elements with the selected class
+    //  and creates list
+    const imgList = document.querySelectorAll(`img.${this.selector}, .${this.selector} img`);
+    this.imgList = imgList;
+
+    // Creates <style> tag for new elements
+    if (!this.noCSS) {
+      const style = document.createElement('style');
+      style.textContent = `
+        .ff-container {
+          display: flex;
+          position: relative;
+        }
+
+        .ff-container img,
+        .ff-container canvas {
+          align-self: start;
+        }
+
+        .ff-container.ff-hover:hover canvas.ff-active,
+        .ff-inactive {
+          position: absolute;
+          opacity: 0;
+        }
+
+        .ff-container.ff-hover:hover img.ff-inactive {
+          position: static;
+          opacity: 1;
+        }
+
+        .ff-canvas {
+          pointer-events: none;
+        }
+      `;
+      document.head.appendChild(style);
+    }
+
+    // Loops through all images
+    for (const img of this.imgList) {
+      // Gives <img> the inactive class, which hides GIF by default
+      img.className = `${this.imgCls} ff-inactive`;
+
+      // Creates <canvas> of GIF and copies data of first frame of animation
+      const canvas = document.createElement("canvas");
+      const imgWidth = img.width || img.naturalWidth;
+      const imgHeight = img.height || img.naturalHeight;
+
+      canvas.width = imgWidth;
+      canvas.height = imgHeight;
+      canvas.className = `${this.canvasCls} ff-active`;
+      canvas.getContext('2d').imageSmoothingEnabled = this.smoothing;
+      canvas.getContext('2d').drawImage(img, 0, 0, imgWidth, imgHeight);
+
+      // Creates container that will hold both <img> and <canvas>
+      const wrapper = document.createElement("div");
+      wrapper.className = "ff-container";
+      if (this.hover) wrapper.classList.add("ff-hover");
+
+      // Inserts container with <img> and <canvas> where <img> originally was
+      img.parentNode.insertBefore(wrapper, img);
+      wrapper.appendChild(img);
+      wrapper.appendChild(canvas);
+    }
+  }
+  stop() { // Stops animation
+    for (const img of this.imgList) {
+      img.className = `${this.imgCls} ff-inactive`;
+      img.nextSibling.className = `${this.canvasCls} ff-active`;
+    }
+  }
+}

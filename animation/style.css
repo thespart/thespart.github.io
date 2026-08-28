@@ -1,0 +1,163 @@
+html {
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+a {
+    position: absolute;
+    transform: translate(-50%, -0%);
+    left: 50%;
+    text-align: center;
+    padding: 5px;
+    color: red;
+    text-decoration: none;
+    font-size: 20px;
+    width: 100px;
+    z-index: 100;
+}
+#glow {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 800px;
+    top: 50%;
+    user-select: none;
+    left: 50%;
+    background: radial-gradient(rgba(255, 255, 255, 0.582) 0%, transparent 70%);
+}
+#count {
+    color: rgba(240, 248, 255, 0.363);
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    font-family: "Consolas";
+    z-index: 2;
+}
+#watch {
+    width: 500px;
+    height: 500px;
+    background-color: aliceblue;
+    margin: 50px auto;
+    position: relative;
+}
+#tv {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    width: 550px;
+    z-index: 10;
+}
+#gif {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    z-index: 0;
+    position: inherit;
+}
+#gif[src="/content/white.gif"] {
+    position: absolute;
+    left: 0;
+    opacity: 0;
+}
+#description {
+    color: lime;
+    position: absolute;
+    margin: 0;
+    top: 25px;
+    left: 25px;
+    width: 450px;
+    opacity: 0%;
+    background-color: black;
+    font-family: "Consolas";
+    z-index: 3;
+      text-shadow: 
+    0 0 5px lime,   /* Small, bright inner core */
+    0 0 10px lime,  /* Medium halo */
+    0 0 20px lime,  /* Large, softer halo */
+    0 0 40px lime;  /* Expansive background glow */
+}
+#others {
+    display: flex;
+    & input {
+        width: 101px;
+        background-color: black;
+        color: white;
+        font-size: 50px;
+        position: inherit;
+        z-index: 100;
+        cursor: pointer;
+    }
+    & ul {
+        padding: 0;
+        margin: 5px 0;
+        display: grid;
+        grid-template-columns: repeat(10, auto);
+        gap: 5px;
+        list-style: none;
+        & li {
+            cursor: pointer;
+            padding: 1px;
+            background: linear-gradient(rgb(71, 71, 71),black);
+            width: 50px;
+            height: 50px;
+        }
+        & li img {
+            object-fit: cover;
+            width: 50px;
+            height: 50px;
+        }
+    }
+}
+body {
+    width: 800px;
+    min-height: 50vh;
+    background: none;
+    display: grid;
+    margin: 0;
+    grid-template-rows: auto 20%;
+    grid-template-columns: 100%;
+    & > * {
+       margin: 15px;
+       border: 2px solid white;
+       & div {
+           width: 100%;
+           height: 100%;
+       }
+    }
+}
+@keyframes fade {
+    from {opacity: 0%;}
+    to {opacity: 100%;}
+}
+@keyframes blink {
+    from {filter: grayscale(0%) brightness(100%);}
+    to {filter: grayscale(100%) brightness(50%);}
+}
+@keyframes whitenoise {
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+.playFadein {
+    animation: fade 0.2s ease-in-out normal forwards;
+}
+.playFadeout {
+    animation: fade 0.2s ease-in-out reverse backwards;
+}
+.playBlink {
+    animation: blink 2s ease-out reverse;
+}
+.playWhiteNoise {
+    animation: whitenoise 2s ease-out normal;
+}
+@media (max-width: 600px) {
+    body {
+        width: 100%;
+    }
+}
+@font-face {
+    font-family: "Consolas";
+    src: url("/content/Consolas-Regular.ttf");
+}

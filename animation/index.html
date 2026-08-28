@@ -1,27 +1,35 @@
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>view anything</title>
-        <link rel="stylesheet" href="./gifstyle.css">
-    </head>
-    <body>
-        <div id="gif">
-            <img src="./content/1.gif" alt="">
-            <div id="black"></div>
-            <p class="unblack">LOADING</p>
-        </div>
-        <div id="buttons">
-            <input type="button" id="left" value="<" onclick="console.log('zdarvoa')">
-            <input type="button" id="right" value=">">
-        </div>
-        <div id="description">
-            <p></p>
-        </div>
-        <div id="others">
-            <ul>
+<!DOCTYPE html>
+<html lang="en ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>TV room</title>
+</head>
 
-            </ul>
+<body>
+    <main>
+        <a href="/">leave</a>
+        <div id="watch">
+            <div id="glow"></div>
+            <p id="description"></p>
+            <p id="count"></p>
+            <img id="tv" draggable="false" src="/content/tv.png" alt="">
+            <img id="gif" src="" alt="">
+            <img id="gif" src="/content/white.gif" alt="">
+
         </div>
-        <script src="./gifviewer.js"></script>
-    </body>
+    </main>
+    <section>
+        <div class="freeze" id="others">
+            <input id="left" type="button" value="◀">
+            <ul>
+                
+            </ul>
+            <input id="right" type="button" value="▶">
+        </div>
+    </section>
+    <script src="./simple-freeze.js"></script>
+    <script src="./gifviewer.js"></script>
+</body>
+
 </html>

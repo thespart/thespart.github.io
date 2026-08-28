@@ -9,7 +9,7 @@ const whitenoise = document.querySelector("#gif[src='/content/white.gif']");
 const countdiv = document.querySelector("#count");
 const hash = window.location.hash;
 const kolvostuff = 20;
-let latest = Number(hash.replace("#", ""))-1 || 0;
+let latest = Number(hash.replace("#", "")) || 0;
 
 
 const descriptions = {
@@ -39,7 +39,7 @@ showGIF(latest);
 function showGIF(i) {
     countdiv.textContent = i+1;
     latest = i;
-    window.location.hash = i+1;
+    window.location.hash = i;
     setTimeout(() => {
         gifviewer.classList.add("playBlink");
         whitenoise.classList.add("playWhiteNoise");

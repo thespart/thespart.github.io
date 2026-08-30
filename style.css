@@ -451,6 +451,18 @@ li .button:hover {
 }
 /* if screen too small, basically mobile support */
 @media (max-width: 700px) {
+    #pick {
+        margin: 0;
+        padding: 20px 0px;
+        width: 100%;
+    }
+    #pick ul {
+        padding: 0;
+        width: calc(100% - 30px);
+    }
+    #pick button {
+        font-size: 400%;
+    }
     #leftpart.games div {
         & div h1 {
             display: none;
@@ -555,8 +567,8 @@ li .button:hover {
     100% {opacity: 0;}
 }
 @keyframes Appearance {
-    0% {transform: rotate(0deg) scale(0);}
-    100% {transform: rotate(1turn) scale(1);}
+    0% {transform: rotate(1turn) scale(0);}
+    100% {transform: rotate(0) scale(1);}
 }
 .animateDialogAppearence {
     animation: DialogAppearence 1s ease;

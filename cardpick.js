@@ -31,8 +31,10 @@ function init() {
     for (let i=0; i<6; i++) {
         const rarity = applyRarity();
         const car = new Card(createCard(), rarity);
+        car.element.style.display = 'none'
         cards[i] = car;
         setTimeout(() => {
+            car.element.style.display = 'block'
             car.element.style = `background: ${rarity.c}`;
             car.element.querySelector('img').src = rarity.s;
             car.element.querySelector('p').textContent = rarity.t;

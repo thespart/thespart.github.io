@@ -5,13 +5,32 @@ const rightbutton = document.querySelector('body main #rightpart #manipulator li
 const leftbutton = document.querySelector('body main #rightpart #manipulator li #left');
 const dialogdom = document.querySelector('#quote');
 const triangle = document.querySelector('#triangle');
+let delta = 0;
+let prevscroll = 0;
+let toadd = 0;
+window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    delta = (scrollTop - prevscroll);
+    toadd = delta;
+    prevscroll = scrollTop;
+})
+let b = 0;
+let d = 0;
+setInterval(() => {
+    toadd > 0 ? b += 0.1: b -= 0.1;
+    b += toadd*0.1;
+    d = Math.sin(b*0.01)*10;
+    toadd *= 0.99;
+    document.documentElement.style = `background-position: ${b}px ${d}px;`;
+}, 10);
+
 import Quotes from "./quotes.js";
 const openSound = new Audio('/content/openup.mp3');
 const dialogaccess = 1;
 let clicks = 0;
 let clickable = true;
 let passcode = '000000';
-let Randomizer = (min, max) => {return Math.ceil(Math.random() * (max - min)) + min - 1}
+let Randomizer = (min, max) => {return Math.floor(Math.random() * (max - min + 1)) + min;}
 sashkadom.addEventListener("click", () => {
     if (clickable) {
         clickable = false;
@@ -37,6 +56,7 @@ const initialQLength = Quotes.length;
 let safeQuotes = [];
 Quotes.forEach(el => safeQuotes.push(el));
 const NewsJSON = [
+    {s: 'school sux', t: 'im going to have exams very soon and school starts in 2days. No fun anymore. Life is ruthless. also i made cool cards check them', d: "30.08.2026"},
     {s: 'Expressiveness', t: "it just started to look beatiful. Animation tab is updated. I really want to make gallery with all of my nice artworks, but i can't do that without making my website weigh 200 gigabytes. So for now it will redirect to my newgrounds page.", d: "28.08.2026"},
     {s: 'Site Upgrade',t: 'After really long time (2 months) i finally made website look better and now it mobile friendly (<i>kind of</i>) and greenish.. hooray! If u want to see old version <a href="https://web.archive.org/web/20260523083019/https://thespart.ru/">check wayback machine</a>, but for some reason it shows incorrectly and i dont really care. Also, <b>+3 new gifs.</b> Planning to update gifwatcher since it pain to use both on pc and phonr',d: '09.08.2026'},
     {s: 'b',t: 'водитель маршрутки',d: '05.07.2026'},

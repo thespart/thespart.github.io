@@ -452,7 +452,6 @@ li .button:hover {
 /* if screen too small, basically mobile support */
 @media (max-width: 700px) {
     #pick {
-        margin: 0;
         padding: 20px 0px;
         width: 100%;
     }

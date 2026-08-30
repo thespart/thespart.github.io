@@ -73,11 +73,13 @@ function createCard() {
         const rotateY = ((x - centerX) / centerX) * 30;
         
         el.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.2)`;
+        el.style.filter = `brightness(${200 - x - y}%)`
     });
 
     wrap.addEventListener('mouseleave', () => {
         el.style.zIndex = '1';
         el.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+        el.style.filter = `brightness(100%)`;
         el.style.transition = 'transform 0.5s ease';
         
     });

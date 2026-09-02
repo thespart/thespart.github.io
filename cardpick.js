@@ -1,5 +1,14 @@
 const pickdiv = document.querySelector("#pick ul");
+const now = new Date();
 let day = localStorage.getItem('day') ?? 8;
+
+const hours = now.getHours();
+const minutes = now.getMinutes();
+const seconds = now.getSeconds();
+const formateTime = (h, m, s) => {
+    return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+}
+
 const cardsbefore = JSON.parse(localStorage.getItem('cards'));
 class Card {
     constructor(element, rarity) {
@@ -43,7 +52,7 @@ function init() {
             setTimeout(() => {
                 car.element.classList.remove('animateAppearance');
             }, 500);
-        }, i*1000);
+        }, i*200);
     }
     console.log(cards)
     return cards;
@@ -73,7 +82,7 @@ function createCard() {
         const rotateY = ((x - centerX) / centerX) * 30;
         
         el.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.2)`;
-        el.style.filter = `brightness(${200 - x - y}%)`
+        el.style.filter = `brightness(${50 + (200 - x - y)/2}%)`;
     });
 
     wrap.addEventListener('mouseleave', () => {

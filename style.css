@@ -457,7 +457,7 @@ li .button:hover {
     }
     #pick ul {
         padding: 0;
-        width: calc(100% - 30px);
+        max-width: calc(100% - 60px);
     }
     #pick button {
         font-size: 400%;
@@ -566,8 +566,8 @@ li .button:hover {
     100% {opacity: 0;}
 }
 @keyframes Appearance {
-    0% {transform: rotate(1turn) scale(0);}
-    100% {transform: rotate(0) scale(1);}
+    0% {transform: rotate(1turn) scale(0); filter: brightness(-100%);}
+    100% {transform: rotate(0) scale(1); filter: brightness(100%);}
 }
 .animateDialogAppearence {
     animation: DialogAppearence 1s ease;

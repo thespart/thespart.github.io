@@ -2,14 +2,14 @@ const stuffColumn = document.querySelector("#others ul");
 const gifviewer = document.querySelector("#gif");
 const divdesc = document.querySelector("#description");
 const blankscreen = document.querySelector("#black");
-const loadingtext = document.querySelector("#gif p");
+const loadingtext = document.querySelector("h1");
 const leftbutton = document.querySelector("#left");
 const rightbutton = document.querySelector("#right");
 const whitenoise = document.querySelector("#gif[src='/content/white.gif']");
 const countdiv = document.querySelector("#count");
 const hash = window.location.hash;
 const kolvostuff = 20;
-let latest = Number(hash.replace("#", "")) || 0;
+let latest = Number(hash.replace("#", "")) ?? 0;
 
 
 const descriptions = {
@@ -36,6 +36,7 @@ const descriptions = {
 }
 
 showGIF(latest);
+let loaded = 0;
 function showGIF(i) {
     countdiv.textContent = i+1;
     latest = i;
@@ -49,12 +50,6 @@ function showGIF(i) {
     
     gifviewer.src = "./content/" + (latest+1) + ".gif";
         divdesc.textContent = descriptions[latest+1];
-        if (gifviewer.complete) {
-            console.log(gifviewer.src, "loaded");
-        } else {
-            gifviewer.addEventListener('load', () => {
-            });
-        }
 }
 
 function getImages(amount, format) {
@@ -76,6 +71,16 @@ function addColumn(content, i) {
     const elementimg = document.createElement("img");
     elementimg.alt = "cool gif"
     elementimg.src = content.image;
+
+    if (elementimg.complete) {
+        } else {
+            elementimg.addEventListener('load', () => {
+                console.log(elementimg.src, "loaded", loaded);
+                loaded++;
+                loadingtext.textContent = `loading... ${loaded}/20`;
+                if (loaded == kolvostuff) {loadingtext.style.display = 'none';}
+            });
+        }
     elementli.appendChild(elementimg);
     stuffColumn.appendChild(elementli);
 }

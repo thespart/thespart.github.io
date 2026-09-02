@@ -11,6 +11,7 @@ let toadd = 0;
 window.addEventListener('scroll', () => {
     const scrollTop = window.scrollY;
     delta = (scrollTop - prevscroll);
+    d -= delta*0.5;
     toadd = delta;
     prevscroll = scrollTop;
 })
@@ -19,7 +20,6 @@ let d = 0;
 setInterval(() => {
     toadd > 0 ? b += 0.1: b -= 0.1;
     b += toadd*0.1;
-    d = Math.sin(b*0.01)*10;
     toadd *= 0.99;
     document.documentElement.style = `background-position: ${b}px ${d}px;`;
 }, 10);

@@ -458,6 +458,8 @@ li .button:hover {
     #pick ul {
         padding: 0;
         max-width: calc(100% - 60px);
+        column-gap: 1vw;
+        justify-content: center;
     }
     #pick button {
         font-size: 400%;

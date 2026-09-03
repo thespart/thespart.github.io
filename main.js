@@ -7,20 +7,19 @@ const dialogdom = document.querySelector('#quote');
 const triangle = document.querySelector('#triangle');
 let delta = 0;
 let prevscroll = 0;
-let toadd = 0;
+//let toadd = 0;
 window.addEventListener('scroll', () => {
     const scrollTop = window.scrollY;
     delta = (scrollTop - prevscroll);
     d -= delta*0.5;
-    toadd = delta;
     prevscroll = scrollTop;
 })
 let b = 0;
 let d = 0;
 setInterval(() => {
-    toadd > 0 ? b += 0.1: b -= 0.1;
-    b += toadd*0.1;
-    toadd *= 0.99;
+    delta > 0 ? b += 0.1: b -= 0.1;
+    //b += toadd*0.1;
+    //toadd *= 0.99;
     document.documentElement.style = `background-position: ${b}px ${d}px;`;
 }, 10);
 

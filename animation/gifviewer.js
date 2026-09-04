@@ -76,7 +76,7 @@ function addColumn(content, i) {
             console.log(elementimg.src, "loaded", loaded);
             loaded++;
             loadingtext.textContent = `loading... ${loaded}/20`;
-            if (loaded == kolvostuff) {
+            if (loaded >= kolvostuff) {
                 loadingtext.style.display = 'none';
                 sessionStorage.setItem('loaded', '20')
             }

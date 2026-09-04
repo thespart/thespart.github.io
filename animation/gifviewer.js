@@ -36,7 +36,7 @@ const descriptions = {
 }
 
 showGIF(latest);
-let loaded = Number(sessionStorage.getItem('loaded')) ?? 0;
+let loaded = 0;
 function showGIF(i) {
     countdiv.textContent = i+1;
     latest = i;
@@ -71,14 +71,15 @@ function addColumn(content, i) {
     const elementimg = document.createElement("img");
     elementimg.alt = "cool gif"
     elementimg.src = content.image;
-
+    if (loaded == kolvostuff) {
+        loadingtext.style.display = 'none';
+    }
         elementimg.addEventListener('load', () => {
             console.log(elementimg.src, "loaded", loaded);
             loaded++;
             loadingtext.textContent = `loading... ${loaded}/20`;
-            if (loaded >= kolvostuff) {
+            if (loaded == kolvostuff) {
                 loadingtext.style.display = 'none';
-                sessionStorage.setItem('loaded', '20')
             }
         });
     elementli.appendChild(elementimg);

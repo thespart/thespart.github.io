@@ -90,7 +90,6 @@ const preview = getImages(kolvostuff, "gif");
 for (let i=0; i<kolvostuff; i++) {
     addColumn({image: preview[i]}, i);
 }
-
 rightbutton.addEventListener("click", () => {
     if (latest >= 0 && latest < kolvostuff-1) {
         latest++

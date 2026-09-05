@@ -17,12 +17,12 @@ class Card {
     }
 }
 const RarityList = [
-    {t: 'regular', s: '/content/1.png', r: 0.4, c: '#718f65'},
-    {t: 'kul one', s: '/content/2.png', r: 0.1, c: '#65868f'},
-    {t: 'awesum', s: '/content/3.png', r: 0.03, c: '#8f6565'},
-    {t: 'nic', s: '/content/4.png', r: 0.01, c: '#4d1c57'},
-    {t: 'watahed', s: '/content/5.png', r: 0.003, c: '#e3e3e3'},
-    {t: 'OMG!!111', s: '/content/6.png', r: 0, c: '#101010'},
+    {t: 'zombe', d: "his real name Zombalniy", s: '/content/1.jpg', r: 0.4, c: '#718f65'},
+    {t: 'big rock', d: "thats too cool to be true. There's a man in foreground btw", s: '/content/2.jpg', r: 0.1, c: '#65868f'},
+    {t: 'box', d: "literally box, but with face. ok", s: '/content/3.jpg', r: 0.03, c: '#8f6565'},
+    {t: 'deamond', d: "sick", s: '/content/4.jpg', r: 0.01, c: '#4d1c57'},
+    {t: 'think', d: "inspired by madness combat", s: '/content/5.jpg', r: 0.003, c: '#e3e3e3'},
+    {t: 'malevich', d:"inspirational", s: '/content/6.jpg', r: 0, c: '#101010'},
 ]
 function loadbefore() {
     for (let i=0; i<6; i++) {
@@ -85,7 +85,7 @@ function createCard() {
         el.style.filter = `brightness(${50 + (200 - x - y)/2}%)`;
     });
 
-    wrap.addEventListener('mouseleave', () => {
+    wrap.addEventListener('pointerleave', () => {
         el.style.zIndex = '1';
         el.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
         el.style.filter = `brightness(100%)`;
@@ -93,7 +93,7 @@ function createCard() {
         
     });
 
-    wrap.addEventListener('mouseenter', () => {
+    wrap.addEventListener('pointerenter', () => {
         el.style.transition = 'none'; 
         el.style.zIndex = '99';
     });

@@ -1,15 +1,38 @@
 const pickdiv = document.querySelector("#pick ul");
-const now = new Date();
-let day = localStorage.getItem('day') ?? 8;
+const timediv = document.querySelector('#pick h2');
 
-const hours = now.getHours();
-const minutes = now.getMinutes();
-const seconds = now.getSeconds();
+const now = new Date();
+
+const cardsbefore = JSON.parse(localStorage.getItem('cards'));
+let taps = Number(localStorage.getItem('day')?.split(';')[1]) ?? 0;
+let day = Number(localStorage.getItem('day')?.split(';')[0]) ?? 8; // 8 это если чувак никогда
+//                                                                до этого не брал
+
 const formateTime = (h, m, s) => {
     return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
 }
+const targetDate = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate(),
+    23, 59, 59, 999
+  );
+const countdown = setInterval(() => {
+  const right = new Date().getTime();
+  const distance = targetDate - right;
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-const cardsbefore = JSON.parse(localStorage.getItem('cards'));
+  timediv.textContent = formateTime(hours, minutes, seconds);
+
+  if (distance < 0) {
+    clearInterval(countdown);
+    timediv.textContent = "cards available. refresh page";
+  }
+}, 1000);
+
+
 class Card {
     constructor(element, rarity) {
         this.element = element;
@@ -18,7 +41,7 @@ class Card {
 }
 const RarityList = [
     {t: 'zombe', d: "his real name Zombalniy", s: '/content/1.jpg', r: 0.4, c: '#718f65'},
-    {t: 'big rock', d: "thats too cool to be true. There's a man in foreground btw", s: '/content/2.jpg', r: 0.1, c: '#65868f'},
+    {t: 'big rock', d: "socalled 'mountain'", s: '/content/2.jpg', r: 0.1, c: '#65868f'},
     {t: 'box', d: "literally box, but with face. ok", s: '/content/3.jpg', r: 0.03, c: '#8f6565'},
     {t: 'deamond', d: "sick", s: '/content/4.jpg', r: 0.01, c: '#4d1c57'},
     {t: 'think', d: "inspired by madness combat", s: '/content/5.jpg', r: 0.003, c: '#e3e3e3'},
@@ -28,7 +51,6 @@ function loadbefore() {
     for (let i=0; i<6; i++) {
         const rarity = cardsbefore[i].rarity;
         const car = new Card(createCard(), rarity.r);
-        console.log(cardsbefore[i]);
         car.element.style = `background: ${rarity.c}`;
         car.element.querySelector('img').src = rarity.s;
         car.element.querySelector('p').textContent = rarity.t;
@@ -54,7 +76,6 @@ function init() {
             }, 500);
         }, i*200);
     }
-    console.log(cards)
     return cards;
 }
 function applyRarity() {
@@ -85,7 +106,7 @@ function createCard() {
         el.style.filter = `brightness(${50 + (200 - x - y)/2}%)`;
     });
 
-    wrap.addEventListener('pointerleave', () => {
+    wrap.addEventListener('mouseleave', () => {
         el.style.zIndex = '1';
         el.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
         el.style.filter = `brightness(100%)`;
@@ -93,7 +114,7 @@ function createCard() {
         
     });
 
-    wrap.addEventListener('pointerenter', () => {
+    wrap.addEventListener('mouseenter', () => {
         el.style.transition = 'none'; 
         el.style.zIndex = '99';
     });
@@ -108,11 +129,12 @@ function createCard() {
     pickdiv.appendChild(wrap);
     return el;
 }
-console.log(localStorage.getItem('day'), day)
-if (day != new Date().getDay()) {
+console.log(`this is your ${taps}# pick!`)
+if (day != now.getDay()) {
     document.querySelector('#pick button').addEventListener('click', () => {
+        taps++;
         localStorage.setItem('cards', JSON.stringify(init()));
-        localStorage.setItem('day', new Date().getDay());
+        localStorage.setItem('day', `${now.getDay()};${taps}`);
         document.querySelector('#pick button').style.display = 'none';
     })
 

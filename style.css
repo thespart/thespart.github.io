@@ -155,12 +155,13 @@ body main #declarator {
         grid-template-columns: repeat(3, 95px);
         grid-template-rows: auto auto;
         gap: 10px;
-        column-gap: 10%;
+        column-gap: 15px;
+        justify-content: center;
         perspective: 1000px;
         & div div {
             background-color: rgb(145, 145, 145);
               box-shadow: 
-                inset 2px 2px 3px rgba(255, 255, 255, 0.6), 
+                inset 2px 2px 3px rgba(255, 255, 255, 0.397), 
                 inset -2px -2px 3px rgba(0, 0, 0, 0.4);
             filter: drop-shadow(0 2px 2px black);
             transition: transform 0.1s ease-out;
@@ -459,7 +460,6 @@ li .button:hover {
         padding: 0;
         max-width: calc(100% - 60px);
         column-gap: 1vw;
-        justify-content: center;
     }
     #pick button {
         font-size: 400%;

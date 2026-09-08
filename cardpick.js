@@ -131,6 +131,8 @@ function createCard() {
 }
 console.log(`this is your ${taps}# pick!`)
 if (day != now.getDay()) {
+    clearInterval(countdown);
+    timediv.textContent = "cards available. refresh page";
     document.querySelector('#pick button').addEventListener('click', () => {
         taps++;
         localStorage.setItem('cards', JSON.stringify(init()));

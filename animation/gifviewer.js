@@ -8,7 +8,7 @@ const rightbutton = document.querySelector("#right");
 const whitenoise = document.querySelector("#gif[src='/content/white.gif']");
 const countdiv = document.querySelector("#count");
 const hash = window.location.hash;
-const kolvostuff = 20;
+const kolvostuff = 21;
 let latest = Number(hash.replace("#", "")) ?? 0;
 
 
@@ -33,10 +33,12 @@ const descriptions = {
     18: "monster eating monster. life is strange thing",
     19: "i had this idea since 2024 and just made it. Could be a good ad for some deodorant",
     20: "one person and too many eyes. Take it however you want i dont care",
+    21: "hands in the sky, yea."
 }
 
-showGIF(latest);
 let loaded = 0;
+showGIF(latest);
+
 function showGIF(i) {
     countdiv.textContent = i+1;
     latest = i;
@@ -49,6 +51,7 @@ function showGIF(i) {
     whitenoise.classList.remove("playWhiteNoise");
     
     gifviewer.src = "./content/" + (latest+1) + ".gif";
+    gifviewer.alt = descriptions[latest+1];
         divdesc.textContent = descriptions[latest+1];
 }
 
@@ -62,14 +65,13 @@ function getImages(amount, format) {
 }
 
 function addColumn(content, i) {
-
     const elementli = document.createElement("li");
 
     elementli.addEventListener("click", () => {
         showGIF(i);
     });
     const elementimg = document.createElement("img");
-    elementimg.alt = "cool gif"
+    elementimg.alt = descriptions[i+1];
     elementimg.src = content.image;
     if (loaded == kolvostuff) {
         loadingtext.style.display = 'none';
@@ -77,7 +79,7 @@ function addColumn(content, i) {
         elementimg.addEventListener('load', () => {
             console.log(elementimg.src, "loaded", loaded);
             loaded++;
-            loadingtext.textContent = `loading... ${loaded}/20`;
+            loadingtext.textContent = `loading... ${loaded}/${kolvostuff}`;
             if (loaded == kolvostuff) {
                 loadingtext.style.display = 'none';
             }
@@ -87,29 +89,33 @@ function addColumn(content, i) {
 }
 const preview = getImages(kolvostuff, "gif");
 
+const column = 20;
+const maxPages = Math.ceil(kolvostuff/column)-1;
+// LOADING ALL THE FUCKIN GIZ
 for (let i=0; i<kolvostuff; i++) {
     addColumn({image: preview[i]}, i);
 }
-rightbutton.addEventListener("click", () => {
-    if (latest >= 0 && latest < kolvostuff-1) {
-        latest++
-        showGIF(latest);
-    } else {
-        latest = 0;
-        showGIF(latest);
+function loadPage(page) {
+    let toshow = (column*page);
+    for (let i=toshow; i<(column*(page+1)); i++) {
+        console.log(i)
+        if (i >= kolvostuff) {break};
+        addColumn({image: preview[i]}, i);
     }
-    console.log(latest)
+};
+let currentPage = 0;
+rightbutton.addEventListener("click", () => {
+    document.querySelectorAll('#others > ul > li').forEach(el => el.remove());
+    if(currentPage < maxPages) {currentPage++};
+    loadPage(currentPage)
+    const f = new FreezeImages({noCss: false, smoothing: false});
 })
 
 leftbutton.addEventListener("click", () => {
-    if (latest > 0 && latest <= kolvostuff-1) {
-        latest--
-        showGIF(latest);
-    } else {
-        latest = kolvostuff-1;
-        showGIF(latest);
-    }
-    console.log(latest)
+    document.querySelectorAll('#others > ul > li').forEach(el => el.remove());
+    if (currentPage >= maxPages) {currentPage--};
+    loadPage(currentPage)
+    const f = new FreezeImages({noCss: false, smoothing: false});
 })
 
 document.querySelector("#tv").addEventListener("pointerenter", () => {

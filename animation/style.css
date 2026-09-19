@@ -4,6 +4,7 @@ html {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    overflow-y:hidden;
 }
 h1 {
     position: absolute;
@@ -15,7 +16,7 @@ h1 {
     padding: 0;
     left: 50%;
     width: 570px;
-    height: 115px;
+    height: 1000px;
     font-size: 80px;
     text-align: center;
 }
@@ -109,6 +110,7 @@ a {
         padding: 0;
         margin: 5px 0;
         display: grid;
+        width: 565px;
         grid-template-columns: repeat(10, auto);
         gap: 5px;
         list-style: none;

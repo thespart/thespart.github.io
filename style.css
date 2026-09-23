@@ -225,9 +225,10 @@ body main #about {
     width: 99%;
     & h2 {
         display: block;
-        font-family: "UbuntuMono";
+        font-family:"UbuntuMono";
         font-size: large;
-        margin: 5px 20px;
+        margin: 10px 20px;
+        margin-bottom: 5px;
         color: rgb(141, 133, 124);
     }
     & #date {
@@ -235,11 +236,11 @@ body main #about {
         color: rgb(209, 203, 196);
     }
     & .separator {
-        margin: 10px 20px;
+        margin: 5px 20px;
         border-style:outset;
     }
     & h1 {
-        margin: 10px 20px;
+        margin: 10px 20px 0 20px;
         font-size: 40px;
         font-family: "UbuntuMono";
         color: rgb(161, 88, 88);

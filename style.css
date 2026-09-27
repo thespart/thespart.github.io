@@ -108,9 +108,6 @@ body main #declarator {
     z-index: 100;
     top: 130px;
 }
-#about {
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25);
-}
 #leftpart #about {
     background: rgb(218, 221, 240);
 }
@@ -217,7 +214,8 @@ body main #rightpart #about {
     height: auto;
 }
 
-body main #about {
+#about {
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25);
     background-color: aliceblue;
     border: 3px solid rgba(0, 0, 0, 0.363);
     margin: 0px;
@@ -226,7 +224,7 @@ body main #about {
     & h2 {
         display: block;
         font-family:"UbuntuMono";
-        font-size: large;
+        font-size: medium;
         margin: 10px 20px;
         margin-bottom: 5px;
         color: rgb(141, 133, 124);
@@ -241,7 +239,7 @@ body main #about {
     }
     & h1 {
         margin: 10px 20px 0 20px;
-        font-size: 40px;
+        font-size: 35px;
         font-family: "UbuntuMono";
         color: rgb(161, 88, 88);
     }
@@ -288,7 +286,7 @@ header * li:hover {
 }
 header * li a {
     display: inline-block;
-    font-size: 3vw;
+    font-size: 3.5vw;
     width: 100%;
     height: 46px;
     text-align: center;
@@ -520,11 +518,11 @@ li .button:hover {
     body main {
         display: grid;
         width: calc(100% - 20px);
-        grid-template-columns: 600px 480px;
+        grid-template-columns: 540px 540px;
         margin: 0 10px;
     }
     body main #rightpart {
-        margin-left: 20px;
+        margin-left: 10px;
         & #news {
             height: auto;
             scrollbar-width: none;

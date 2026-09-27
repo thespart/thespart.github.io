@@ -40,7 +40,6 @@ sashkadom.addEventListener("click", () => {
         }
     }
 })
-
 let count = 0;
 const effects = () => {
     if (count > 60) {
@@ -55,7 +54,6 @@ const initialQLength = Quotes.length;
 let safeQuotes = [];
 Quotes.forEach(el => safeQuotes.push(el));
 const NewsJSON = [
-    {s: 'small talk', t: "hello, so, i wanted to say i made <a href='https://t.me/TheSpart'>telegram channel</a> where you can <a href='https://t.me/TheSpart?direct'`>write</a> your <strong>unwanted</strong> opinion about anything. Yeah i could made discord channel for that,.. but my main auditory is russian, even if site is written in english and oriented for them. ANyways i don't know what to say more. Ah yeah look at the date this post was made lol"},
     {s: 'school sux', t: 'im going to have exams very soon and school starts in 2days. No fun anymore. Life is ruthless. also i made cool cards check them', d: "30.08.2026"},
     {s: 'Expressiveness', t: "it just started to look beatiful. Animation tab is updated. I really want to make gallery with all of my nice artworks, but i can't do that without making my website weigh 200 gigabytes. So for now it will redirect to my newgrounds page.", d: "28.08.2026"},
     {s: 'Site Upgrade',t: 'After really long time (2 months) i finally made website look better and now it mobile friendly (<i>kind of</i>) and greenish.. hooray! If u want to see old version <a href="https://web.archive.org/web/20260523083019/https://thespart.ru/">check wayback machine</a>, but for some reason it shows incorrectly and i dont really care. Also, <b>+3 new gifs.</b> Planning to update gifwatcher since it pain to use both on pc and phonr',d: '09.08.2026'},
@@ -127,12 +125,12 @@ function addnNews(newsNumber) {
         addNews(NewsJSON[i + (newsNumber-1)*NPP]);
     }
 }
+
 function changeNews() {
     if (currentnews < 1) {currentnews = 1}
     if (currentnews > Math.ceil(NewsJSON.length/NPP)) {currentnews = Math.ceil(NewsJSON.length/NPP)};
     const elements = document.querySelectorAll("#rightpart #about");
     elements.forEach(el => el.remove());
-    if (prevnewsvalue != currentnews) {news?.scrollTo()};
     addnNews(currentnews);
     prevnewsvalue = currentnews;
     newsElement.value = currentnews + `/${Math.ceil(NewsJSON.length/NPP)}`;

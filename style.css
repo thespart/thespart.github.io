@@ -299,12 +299,12 @@ header #background {
 }
 
 header * li {
-    border-right: 2px solid rgb(63, 94, 65);
-    border-bottom: 2px solid rgb(63, 94, 65);
+    border-right: 3px solid rgb(63, 94, 65);
+    border-bottom: 3px solid rgb(63, 94, 65);
     background: linear-gradient(rgb(108, 168, 114), rgb(76, 119, 80));
 }
 header * #lefty {
-    border-left: 2px solid rgb(63, 94, 65);
+    border-left: 3px solid rgb(63, 94, 65);
 }
 header * li:hover {
     background: rgb(134, 196, 138);

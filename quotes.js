@@ -67,7 +67,9 @@ let Quotes = [
     "Do not be fooled. Im not creator of this website and everything i say is not his words",
     "hey its me",
     "dramatic piano sound",
-    "bebebeb"
+    'im tired of being like this, free me',
+    'one day this website stop getting updates, and then new era starts',
+    'sometimes i dream about milk'
 ]
 
 export default Quotes;

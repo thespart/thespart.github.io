@@ -23,6 +23,13 @@ setInterval(() => {
     document.documentElement.style = `background-position: ${b}px ${d}px;`;
 }, 10);
 
+
+//im happy
+const radiusthingy = new URLSearchParams(window.location.search);
+if (radiusthingy.has('radius')) {
+    document.querySelectorAll('*').forEach(el => el.style = `border-radius: ${Number(radiusthingy.get('radius'))}px;`)
+}
+
 import Quotes from "./quotes.js";
 const openSound = new Audio('/content/openup.mp3');
 const dialogaccess = 1;
@@ -54,6 +61,7 @@ const initialQLength = Quotes.length;
 let safeQuotes = [];
 Quotes.forEach(el => safeQuotes.push(el));
 const NewsJSON = [
+    {s: 'impoertant', t: 'soo0itso wwigjiehgwh wheghelkg hwkgjwpgjpgowjepogjwgpowjgpeg wgoewpppppjpgojwegwegiwepgi !!!!!!!!!!!!!!!!!!!!!!!!!! qwjkrpoqjrijqrpqjrqpjqwprjropqjrr ==im bored asf add me in tiktok my name is @derspart we will have streak together and we will send videso and we we we it will be so cool like really and i just discovered border-radius so now everything will be with <a href="?radius=100">radius i my head is getinmg hurt when i see my site with radius so uh ye dont click on that link you will probably die unless you want to die but shit everything is a link now i dont know why like its really strange wth', d: '28.09.2026'},
     {s: 'school sux', t: 'im going to have exams very soon and school starts in 2days. No fun anymore. Life is ruthless. also i made cool cards check them', d: "30.08.2026"},
     {s: 'Expressiveness', t: "it just started to look beatiful. Animation tab is updated. I really want to make gallery with all of my nice artworks, but i can't do that without making my website weigh 200 gigabytes. So for now it will redirect to my newgrounds page.", d: "28.08.2026"},
     {s: 'Site Upgrade',t: 'After really long time (2 months) i finally made website look better and now it mobile friendly (<i>kind of</i>) and greenish.. hooray! If u want to see old version <a href="https://web.archive.org/web/20260523083019/https://thespart.ru/">check wayback machine</a>, but for some reason it shows incorrectly and i dont really care. Also, <b>+3 new gifs.</b> Planning to update gifwatcher since it pain to use both on pc and phonr',d: '09.08.2026'},

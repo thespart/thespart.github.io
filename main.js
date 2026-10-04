@@ -124,7 +124,7 @@ function addNews(data) {
     return about;
 }
 // news per page
-const NPP = 10;
+const NPP = window.location.pathname == '/news/' ? 10 : 2;
 let prevnewsvalue = 0;
 let currentnews = 1;
 function addnNews(newsNumber) {

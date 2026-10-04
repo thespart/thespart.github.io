@@ -252,7 +252,6 @@ body main #rightpart #about {
 }
 main > #about {
     height: auto;
-    margin-top: 20px;
     background: none;
     padding: 3px;
     border: none;
@@ -262,6 +261,7 @@ main > #about {
     }
     & h2 {
         color:#9ac49d;
+        text-align:justify;
     }
     & a {
         color: #9abfc4;
@@ -594,8 +594,7 @@ li .button:hover {
     }
     main > #about {
         margin-left: 10px;
-        margin-top: 20px;
-        width: calc(100% - 25px);
+        width: 600px;
     }
     header * li a {
         font-size: 30px;

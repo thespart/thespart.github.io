@@ -612,9 +612,9 @@ li .button:hover {
             height: 300px;
             width: 585px;
             padding: 5px;
-            margin-bottom: 20px;
+            margin-bottom: 13px;
             margin-left: 20px;
-            background-color: #3a4b3b;
+            background: linear-gradient(#92bb94, #3a4b3b);
         }
     }
     header * li a {

@@ -141,10 +141,11 @@ body main #rightpart #manipulator {
         left:50%;
         top:50%;
         color: white;
-        font-size: 90px;
+        font-size: 50px;
         font-family: AntonSC;
         &:hover {
             cursor: pointer;
+            color: black;
         }
     }
     & h2 {
@@ -249,10 +250,10 @@ body main #rightpart #about {
 
 main > #about {
     height: auto;
-    background:linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.171));
-    margin: 20px 0px;
-    padding: 20px;
-    border: 2px inset solid rgba(255, 253, 253, 0.479);
+    background:linear-gradient(rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.2));
+    padding: 20px 0 0;
+    width: 100%;
+    border: none;
     box-shadow: none;
     & h1 {
         color: #9ac49d;
@@ -260,12 +261,17 @@ main > #about {
     & h2 {
         color:#9ac49d;
         text-align:justify;
+        margin-bottom: 0;
+        padding-bottom: 20px;
     }
     & a {
         color: #9abfc4;
     }
     & a:visited {
         color: #b79ac4;
+    }
+    & iframe {
+        display: none;
     }
 }
 #about {
@@ -591,8 +597,25 @@ li .button:hover {
         }
     }
     main > #about {
-        margin-left: 10px;
-        width: calc(100% - 65px);
+        text-align: center;
+        display: flex;
+        & .separator {
+            margin: 0;
+        }
+        & h2 {
+            text-align: justify;
+            width: 300px;
+        }
+        & iframe {
+            display: block;
+            margin: 0 auto;
+            height: 300px;
+            width: 585px;
+            padding: 5px;
+            margin-bottom: 20px;
+            margin-left: 20px;
+            background-color: #3a4b3b;
+        }
     }
     header * li a {
         font-size: 30px;

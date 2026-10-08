@@ -39,13 +39,22 @@ class Card {
         this.rarity = rarity;
     }
 }
+// r[i] = n[i+1].r - n[i].r | r[i] ACTUAL rarity
+// 1 = 1 - 0.8 = 0.2
+// 2 = 0.8 - 0.7 = 0.1
+// 3 = 0.7 - 0.6 = 0.1
+// 4 = 0.6 - 0.5 = 0.1
+// 5 = 0.5 - 0.4 = 0.1
+// 6 = 0.4 - 0.3 = 0.1
+// 7 = 0.3 - 0 = 0.3
 const RarityList = [
-    {t: 'zombe', d: "his real name Zombalniy", s: '/content/1.jpg', r: 0.4, c: '#718f65'},
-    {t: 'big rock', d: "socalled 'mountain'", s: '/content/2.jpg', r: 0.1, c: '#65868f'},
-    {t: 'box', d: "literally box, but with face. ok", s: '/content/3.jpg', r: 0.03, c: '#8f6565'},
-    {t: 'deamond', d: "sick", s: '/content/4.jpg', r: 0.01, c: '#4d1c57'},
-    {t: 'think', d: "inspired by madness combat", s: '/content/5.jpg', r: 0.003, c: '#e3e3e3'},
-    {t: 'malevich', d:"inspirational", s: '/content/6.jpg', r: 0, c: '#101010'},
+    {t: 'zombe', d: "he dislikes disco", s: '/content/1.webp', r: 0.8, c: '#718f65'},
+    {t: 'roget', d: 'smile', s: '/content/7.webp', r: 0.6, c: '#6799c2'},
+    {t: 'big rock', d: "socalled 'mountain'", s: '/content/2.webp', r: 0.3, c: '#65868f'},
+    {t: 'box', d: "literally box, but with face. ok", s: '/content/3.webp', r: 0.1, c: '#8f6565'},
+    {t: 'deamond', d: "sick", s: '/content/4.webp', r: 0.05, c: '#4d1c57'},
+    {t: 'think', d: "inspired by madness combat", s: '/content/5.webp', r: 0.1, c: '#e3e3e3'},
+    {t: 'malevich', d:"inspirational", s: '/content/6.webp', r: 0, c: '#101010'},
 ]
 function loadbefore() {
     for (let i=0; i<6; i++) {
@@ -132,7 +141,7 @@ function createCard() {
 console.log(`this is your ${taps}# pick!`)
 if (day != now.getDay()) {
     clearInterval(countdown);
-    timediv.textContent = "cards available. refresh page";
+    timediv.textContent = "cards available";
     document.querySelector('#pick button').addEventListener('click', () => {
         taps++;
         localStorage.setItem('cards', JSON.stringify(init()));

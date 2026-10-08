@@ -414,9 +414,9 @@ header #maininfo #logo {
     & #socials {
         display: grid;
         grid-template-columns: repeat(4, 25%);
-        width: 80%;
+        width: 95%;
         height: 50px;
-        margin: 0 auto;
+        margin-left: 10px;
         margin-top: 100px;
         margin-bottom: 10px;
         row-gap: 5px;
@@ -426,6 +426,9 @@ header #maininfo #logo {
             border: none;
             display: block;
             filter: drop-shadow(4px 4px 3px rgba(0, 0, 0, 1));
+        }
+        & img:hover {
+            filter: brightness(0.5) contrast(5);
         }
     }
     & h2 {
@@ -574,19 +577,19 @@ li .button:hover {
     }
 }
 /* pc compability */
-@media (min-width: 1100px) {
+@media (min-width: 1000px) {
     html {
         height: auto;
     }
     body {
         height: auto;
-        width: 1100px;
+        width: 1000px;
         min-height: 0;
     }
     body main #sections {
         display: grid;
         width: calc(100% - 20px);
-        grid-template-columns: 440px 640px;
+        grid-template-columns: 440px 540px;
         margin: 0 10px;
     }
     body main #rightpart {
@@ -621,10 +624,10 @@ li .button:hover {
     header #maininfo #logo #separator {
         border-left: 3px dashed rgb(92, 138, 95);
         border-right: 3px dashed rgb(92, 138, 95);
-        width: 350px;
+        width: 250px;
         height: 200px;
         & .background {
-            width: 320px;
+            width: 220px;
         }
     }
     header #buttons { 
@@ -668,8 +671,7 @@ li .button:hover {
     font-family: "AntonSC";
     src: url("./content/AntonSC-Regular.ttf");
 }
-@font-face {
+@font-face{
     font-family: "UbuntuMono";
     src: url("./content/UbuntuMono-Bold.ttf");
 }
-

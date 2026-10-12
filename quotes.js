@@ -69,7 +69,11 @@ let Quotes = [
     "dramatic piano sound",
     'im tired of being like this, free me',
     'one day this website stop getting updates, and then new era starts',
-    'sometimes i dream about milk'
+    'sometimes i dream about milk',
+    'i bite',
+    'i hate people like you',
+    'do me a favor and leave me alone',
+    
 ]
 
 export default Quotes;

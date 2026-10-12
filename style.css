@@ -3,7 +3,6 @@ html {
     margin: none;
     padding: none;
     width: 100vw;
-    height: 100%;
     background-color: rgb(38, 68, 39);
     scrollbar-color:  rgb(95, 141, 97) rgb(38, 68, 39);
     background-image: url('/content/bg.jfif');

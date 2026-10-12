@@ -475,7 +475,6 @@ header #maininfo #logo {
     }
 }
 
-
 /*.opened {
     background: rgb(95, 141, 97);
     border-bottom: none;
@@ -524,6 +523,13 @@ li .button:hover {
 }
 /* if screen too small, basically mobile support */
 @media (max-width: 700px) {
+        /* for little dudes for a while */
+    img {
+        display: none;
+    }
+    #pick img {
+        display: inline;
+    }
     #pick {
         padding: 20px 0px;
         width: 100%;

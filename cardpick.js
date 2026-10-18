@@ -7,23 +7,7 @@ const cardsbefore = JSON.parse(localStorage.getItem('cards'));
 let taps = Number(localStorage.getItem('day')?.split(';')[1]) ?? 0;
 let day = Number(localStorage.getItem('day')?.split(';')[0]) ?? 8; // 8 это если чувак никогда
 //                                                                до этого не брал
-let CardsBeen = localStorage.getItem('day')?.split(';')[2] ?? [];
-function calculateALLCARDZ() {
-    let map = new Set();
 
-    if (CardsBeen.length != 0) {
-        CardsBeen = CardsBeen.split(',');
-    }
-    for (let k=0; k < CardsBeen.length; k++) {
-        for (let i of CardsBeen) {
-            if (i == CardsBeen[k]) {
-                map.add(i);
-            }
-        }
-    }
-    return map;
-}
-console.log(calculateALLCARDZ());
 const formateTime = (h, m, s) => {
     return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
 }
@@ -69,7 +53,7 @@ const RarityList = [
     {t: 'big rock', d: "socalled 'mountain'", s: '/content/2.webp', r: 0.3, c: '#65868f'},
     {t: 'box', d: "literally box, but with face. ok", s: '/content/3.webp', r: 0.1, c: '#8f6565'},
     {t: 'deamond', d: "sick", s: '/content/4.webp', r: 0.05, c: '#4d1c57'},
-    {t: 'think', d: "inspired by madness combat", s: '/content/5.webp', r: 0.02, c: '#e3e3e3'},
+    {t: 'think', d: "inspired by madness combat", s: '/content/5.webp', r: 0.1, c: '#e3e3e3'},
     {t: 'malevich', d:"inspirational", s: '/content/6.webp', r: 0, c: '#101010'},
 ]
 function loadbefore() {
@@ -89,7 +73,6 @@ function init() {
         const car = new Card(createCard(), rarity);
         car.element.style.display = 'none'
         cards[i] = car;
-        CardsBeen.push(rarity.t);
         setTimeout(() => {
             car.element.style.display = 'block'
             car.element.style = `background: ${rarity.c}`;
@@ -155,16 +138,14 @@ function createCard() {
     pickdiv.appendChild(wrap);
     return el;
 }
-
-console.log(`this is your ${taps}# pick!`);
-console.log(`your latest cards were: ${CardsBeen}`);
+console.log(`this is your ${taps}# pick!`)
 if (day != now.getDay()) {
     clearInterval(countdown);
     timediv.textContent = "cards available";
     document.querySelector('#pick button').addEventListener('click', () => {
         taps++;
         localStorage.setItem('cards', JSON.stringify(init()));
-        localStorage.setItem('day', `${now.getDay()};${taps};${CardsBeen}`);
+        localStorage.setItem('day', `${now.getDay()};${taps}`);
         document.querySelector('#pick button').style.display = 'none';
     })
 

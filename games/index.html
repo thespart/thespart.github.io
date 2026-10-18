@@ -51,7 +51,7 @@
                         <div class="background"></div>
                     </div>
                     <div id="megalogo">
-                        <img src="../content/favicon.png" draggable="false" alt="logo">
+                        <img src="/content/favicon.png" draggable="false" alt="logo">
                         <div id="triangle" class="triangle"></div>      
                         <div id="quote">
                             <h3></h3>
@@ -74,9 +74,11 @@
                 & #leftpart > div {
                     height: 150px;
                     margin-bottom: 10px;
-                    border: 3px solid #00000066;
+                    border: 3px solid #25382d;
                     position: relative;
+                    cursor: pointer;
                     & h1 {
+                        user-select: none;
                         text-shadow: 0px 0px 10px black;
                         -webkit-text-stroke: 0.5px;
                         -webkit-text-stroke-color: black;
@@ -94,33 +96,44 @@
                     }
                     & button {
                         font-family: UbuntuMono;
-                        filter: grayscale(1);
+                        text-shadow: white 0px 0px 10px;
+                        border: rgba(255, 255, 255, 0.411) solid 2px;
+                        margin-right: 20px;
+                        color: white;
+                        background: rgba(0, 0, 0, 0.308);
                         position: absolute;
-                        font-size: 50px;
-                        bottom: 10px;
-                        right: 10px;
-                        width: 200px;
+                        font-size: 100px;
                         height: 60px;
+                        width: 100%;
+                        height: 100%;
+                        transform: translate(-50%, -50%);
+                        top: 50%;
+                        left: 50%;
+                        z-index: 99;
+                        opacity: 0;
+                        &:hover {
+                            opacity: 1;
+                        }
                     }
                     & div {
                     height: 100%;
                     width: 80%;
-                    mask-image: radial-gradient(circle, black 60%, transparent 100%);
-                    -webkit-mask-image: linear-gradient(90deg, black 65%, transparent 100%);
+                    mask-image: radial-gradient(circle, black 0%, transparent 100%);
+                    -webkit-mask-image: linear-gradient(90deg, black 0%, transparent 100%);
                 }
             }
             #physics {
-                background: black;;
+                background: black;
                 color: #FFB100;
                 & div {
-                background: url("../content/banner1.jpg");
+                background: url("/content/banner1.jpg");
                 }
             }
             #tennis {
                 background:black;
                 color: #FFA5EE;
                 & div {
-                background: url("../content/banner2.jpg");
+                background: url("/content/banner2.jpg");
                 }
             }
         }

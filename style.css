@@ -229,13 +229,14 @@ body main #rightpart #about {
 
 #declarator {
     margin: 15px 0;
+    padding-left: 20px;
+    height: 45px;
     margin-bottom: 0;
     margin-right: 0;
-    background: linear-gradient(
-        rgb(87, 121, 90), 
-        rgb(51, 75, 54));
+    background: #000000;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(60, 87, 68, 1) 6%, rgba(58, 87, 67, 1) 11%, rgba(65, 102, 70, 1) 48%, rgba(76, 115, 84, 1) 51%, rgba(63, 92, 63, 1) 92%, rgba(130, 173, 130, 1) 100%);
     text-align: left;
-    color: rgb(176, 202, 187);
+    color: rgb(145, 182, 159);
     border: 2px solid rgb(63, 94, 65);
     border-bottom: 0;
     border-radius: 5px;
@@ -247,10 +248,14 @@ body main #rightpart #about {
     height: 200px;
     background-color: orange;
 }
+
+#leftpart #declarator:nth-child(1) {
+    filter: hue-rotate(160deg) contrast(1.2);
+}
 #event {
     height: 200px;
     background: radial-gradient(rgb(154, 201, 160) 10%, rgb(55, 71, 57)) ;
-    border: #36523e solid 2px;
+    border: #573a57 solid 2px;
     border-top: none;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25);
     position: relative;
@@ -273,12 +278,33 @@ body main #rightpart #about {
         margin: 0;
         letter-spacing: 5px;
         font-family: AntonSC;
-        height: 100px;
+        text-shadow: rgba(0, 0, 0, 0.507) 2px 2px 5px;
+        height: 70px;
         padding-top:10px;
     }
     & h1:nth-child(2) {
         font-size: 40px;
-        padding-top:0px;
+        height: 10px;
+    }
+    & img {
+        position: absolute;
+        z-index: 10;
+        user-select: none;
+        pointer-events: none;
+    }
+    & img[src='content/stars.svg']:nth-child(1) {
+        left: -10px;
+        top: -20px;
+    }
+    & img[src='content/stars.svg']:nth-child(2) {
+        right: -10px;
+        top: -20px;
+        transform: scaleX(-1);
+    }
+    & img[src='content/ramkla.svg'] {
+        transform: translate(-50%, 0) scaleX(3) scaleY(3);
+        left: 50%;
+        bottom: -30px;
     }
 }
 main > #about {
@@ -303,9 +329,7 @@ main > #about {
     & a:visited {
         color: #b79ac4;
     }
-    & iframe {
-        display: none;
-    }
+
 }
 #about {
     background: linear-gradient(rgb(154, 160, 165) 0%, aliceblue 30px);

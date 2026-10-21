@@ -96,6 +96,7 @@ a {
     0 0 40px lime;  /* Expansive background glow */
 }
 #others {
+    position: relative;
     display: flex;
     & input {
         width: 101px;
@@ -128,6 +129,16 @@ a {
             height: 50px;
         }
     }
+}
+#hidevapecode {
+    /* hehe */
+    position: absolute;
+    width: 800px;
+    transform: translate(0, 100%);
+    bottom:-1px;
+    background-color: black;
+    z-index: 99;
+    height: 200px;
 }
 body {
     width: 800px;

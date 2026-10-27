@@ -73,7 +73,9 @@ let Quotes = [
     'i bite',
     'i hate people like you',
     'do me a favor and leave me alone',
-    
+    'rot in hell',
+    "i own you",
+    'https://lavacast.ru/neurohell/1.jpg'
 ]
 
 export default Quotes;

@@ -112,7 +112,7 @@ a {
         margin: 5px 0;
         display: grid;
         width: 565px;
-        grid-template-columns: repeat(10, auto);
+        grid-template-columns: repeat(10, 52px);
         gap: 5px;
         list-style: none;
         position: relative;

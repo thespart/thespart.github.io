@@ -8,7 +8,7 @@ const rightbutton = document.querySelector("#right");
 const whitenoise = document.querySelector("#gif[src='/content/white.gif']");
 const countdiv = document.querySelector("#count");
 const hash = window.location.hash;
-const kolvostuff = 21;
+const kolvostuff = 22;
 let latest = Number(hash.replace("#", "")) ?? 0;
 
 
@@ -33,13 +33,14 @@ const descriptions = {
     18: "monster eating monster. life is strange thing",
     19: "i had this idea since 2024 and just made it. Could be a good ad for some deodorant",
     20: "one person and too many eyes. Take it however you want i dont care",
-    21: "hands in the sky, yea."
+    21: "hands in the sky, yea.",
+    22: ""
 }
 
 let loaded = 0;
 showGIF(latest);
-
-function showGIF(i) {
+let img = new Image();
+async function showGIF(i) {
     countdiv.textContent = i+1;
     latest = i;
     window.location.hash = i;
@@ -49,16 +50,20 @@ function showGIF(i) {
     }, 10);
     gifviewer.classList.remove("playBlink");
     whitenoise.classList.remove("playWhiteNoise");
-    
+    img.src = "./content/" + (latest+1) + ".gif";
     gifviewer.src = "./content/" + (latest+1) + ".gif";
+
     gifviewer.alt = descriptions[latest+1];
         divdesc.textContent = descriptions[latest+1];
 }
 
-function getImages(amount, format) {
+img.onerror = function() {
+    gifviewer.src = "./content/" + (latest+1) + ".webp";
+}
+function getImages(amount, format, startfrom) {
     const content = [];
 
-    for (let i=0; i<amount; i++) {
+    for (let i=startfrom; i<amount+startfrom; i++) {
         content.push("./content/" + (i+1) + "." + format);
     }
     return content;
@@ -87,7 +92,9 @@ function addColumn(content, i) {
     elementli.appendChild(elementimg);
     stuffColumn.appendChild(elementli);
 }
-const preview = getImages(kolvostuff, "gif");
+const preview = [];
+getImages(kolvostuff-1, "gif", 0).forEach(el => preview.push(el));
+getImages(1, "webp", 21).forEach(el => preview.push(el));
 
 const column = 20;
 const maxPages = Math.ceil(kolvostuff/column)-1;

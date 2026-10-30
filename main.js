@@ -8,6 +8,26 @@ const triangle = document.querySelector('#triangle');
 let delta = 0;
 let prevscroll = 0;
 //let toadd = 0;
+const placeholderemotions = {
+    "about": "🏠",
+    "gallery": "🎨",
+    "animation": "🎥",
+    "contact": "💬",
+    "games": "🎮",
+}
+function changetoEmoji(setback) {
+    document.querySelector('#buttons').childNodes.forEach(el => {
+        if (el.hasChildNodes()) {
+            setback == false ? el.firstChild.textContent = placeholderemotions[el.firstChild.id.replace('1', '')] : el.firstChild.textContent = el.firstChild.id.replace('1', '')
+        }
+    })
+}
+if (innerWidth < 700) {changetoEmoji(false)}
+window.addEventListener('resize', () => {
+    if (innerWidth > 700) {
+        changetoEmoji(true);
+    } else {changetoEmoji(false)}
+})
 window.addEventListener('scroll', () => {
     const scrollTop = window.scrollY;
     delta = (scrollTop - prevscroll);

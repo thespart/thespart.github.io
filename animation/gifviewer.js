@@ -34,11 +34,10 @@ const descriptions = {
     19: "i had this idea since 2024 and just made it. Could be a good ad for some deodorant",
     20: "one person and too many eyes. Take it however you want i dont care",
     21: "hands in the sky, yea.",
-    22: ""
+    22: "halloween party has gone horribly right. very unsettling imagery of zombies having fun. made for halloween spooktacular on Newgrounds"
 }
 
 let loaded = 0;
-showGIF(latest);
 let img = new Image();
 async function showGIF(i) {
     countdiv.textContent = i+1;
@@ -87,6 +86,7 @@ function addColumn(content, i) {
             loadingtext.textContent = `loading... ${loaded}/${kolvostuff}`;
             if (loaded == kolvostuff) {
                 loadingtext.style.display = 'none';
+                showGIF(latest);
             }
         });
     elementli.appendChild(elementimg);

@@ -335,8 +335,12 @@ main > #about {
     padding: 20px 0 0;
     width: 100%;
     border: none;
+    font-family: UbuntuMono;
     box-shadow: none;
     & h1 {
+        margin: 10px 20px 0 20px;
+        font-size: 35px;
+        font-family: "UbuntuMono";
         color: #9ac49d;
     }
     & h2 {

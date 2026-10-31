@@ -61,12 +61,18 @@ footer {
 }
 #sections {
     padding-bottom: 20px;
+    margin: 0 auto;
+    width: calc(100% - 20px);
+    display: grid;
+    grid-template-columns: 45% 55%;
+    & #rightpart {
+        margin-left: 10px;
+    }
 }
 body main {
     width: 100%;
     height: auto;
     background-color: rgb(95, 141, 97);
-    display:contents;
     margin-top: 20px;
     padding-bottom: 20px;
 }
@@ -123,7 +129,6 @@ body main #rightpart #manipulator {
 .games {
     background:linear-gradient(rgba(0,0,0,0) 50px, #3a4b3b 0px);
 }
-
 #pick {
     background: linear-gradient(rgb(212, 212, 212) 5%,gray 30%, rgb(46, 46, 46));
     height: 240px;
@@ -140,7 +145,7 @@ body main #rightpart #manipulator {
         left:50%;
         top:50%;
         color: white;
-        font-size: 50px;
+        font-size: 400%;
         font-family: AntonSC;
         &:hover {
             cursor: pointer;
@@ -159,17 +164,18 @@ body main #rightpart #manipulator {
         font-size: 20px;
     }
     & ul {
+        padding: 0;
+        max-width: calc(100% - 60px);
+        column-gap: 1vw;
         width: 356px;
         background: rgba(0, 0, 0, 0.164);
         box-shadow: 0 0px 5px 5px rgba(0, 0, 0, 0.164);
         height: 100%;
-        padding: 0;
         margin: 0 auto;
         display: grid;
         grid-template-columns: repeat(3, 95px);
         grid-template-rows: auto auto;
         gap: 10px;
-        column-gap: 15px;
         justify-content: center;
         perspective: 1000px;
         & div div {
@@ -227,46 +233,46 @@ body main #rightpart #about {
     height: auto;
 }
 
-#declarator:not(.event) {
+#declarator {
+    display: flex;
     margin: 15px 0;
-    padding-left: 20px;
     padding-top: 2px;
     height: 45px;
     margin-bottom: 0;
     margin-right: 0;
-    background: #000000;
-    background: linear-gradient(0deg, rgb(78, 112, 76) 0%, rgba(60, 87, 68, 1) 6%, rgba(58, 87, 67, 1) 11%, rgba(65, 102, 70, 1) 48%, rgba(76, 115, 84, 1) 51%, rgb(74, 114, 74) 92%, rgb(96, 148, 96) 100%);
+    background: linear-gradient(0deg, rgba(94, 130, 98, 1) 0%, rgba(73, 135, 95, 1) 5%, rgba(74, 143, 94, 1) 11%, rgba(90, 158, 94, 1) 47%, rgba(100, 176, 119, 1) 51%, rgba(137, 204, 137, 1) 96%, rgba(141, 214, 141, 1) 100%);
     text-align: left;
-    color: rgb(175, 219, 192);
+    color: rgb(219, 238, 226);
     border: 2px solid rgb(63, 94, 65);
     border-bottom: 0;
     border-radius: 5px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
+    & h1 {
+        margin-top: 5px;
+        margin-left: 5px;
+    }
+    & img {
+        width: 40px; height: 40px;
+        margin-left: 2px;
+        border-radius: 10px;
+        border: 2.5px solid rgb(81, 119, 83);
+        background-color: rgb(63, 94, 65);
+    }
 }
-
 #tip {
     height: 200px;
     background-color: orange;
 }
-
 .event {
-    filter: hue-rotate(160deg) contrast(1.2);
-    margin: 15px 0;
-    padding-left: 20px;
-    padding-top: 2px;
-    height: 45px;
-    margin-bottom: 0;
-    margin-right: 0;
-    background: #000000;
-    background: linear-gradient(0deg, rgb(0, 0, 0) 0%, rgba(60, 87, 68, 1) 6%, rgba(58, 87, 67, 1) 11%, rgba(65, 102, 70, 1) 48%, rgba(76, 115, 84, 1) 51%, rgb(74, 114, 74) 92%, rgba(130, 173, 130, 1) 100%);
-    text-align: left;
-    color: rgb(145, 182, 159);
-    border: 2px solid #baaeff;
-    border-bottom: 0;
-    border-radius: 5px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
+    background: linear-gradient(0deg, rgba(130, 94, 128, 1) 0%, rgba(130, 73, 135, 1) 5%, rgba(142, 74, 143, 1) 11%, rgba(154, 92, 137, 1) 45%, rgba(158, 90, 148, 1) 47%, rgba(176, 100, 176, 1) 51%, rgba(204, 137, 194, 1) 96%, rgba(214, 141, 201, 1) 100%) !important;
+    border: #ffdd46 solid 2px !important;
+    border-bottom: none !important;
+    color: rgb(236, 219, 238) !important;
+    & img {
+        border: 2.5px solid rgb(119, 81, 111) !important;
+        background-color: rgb(94, 63, 90) !important;
+    }
 }
 #event {
     height: 200px;
@@ -345,6 +351,14 @@ main > #about {
     & a:visited {
         color: #b79ac4;
     }
+    & #socials {
+        width: 70%;
+        margin: 0 12.5%;
+        margin-top: 10px;
+        padding-bottom: 100px;
+        gap: 10px;
+        margin-bottom: 0;
+    }
 
 }
 #about {
@@ -369,11 +383,16 @@ main > #about {
         margin: 5px 20px;
         border-style:outset;
     }
-    & h1 {
+    & > a {
         margin: 10px 20px 0 20px;
+        display: block;
         font-size: 35px;
         font-family: "UbuntuMono";
         color: rgb(161, 88, 88);
+        &:hover {
+            cursor: pointer;
+            text-decoration: none;
+        }
     }
 }
 
@@ -416,10 +435,6 @@ header * li {
 }
 header * #lefty {
     border-left: 2px solid rgb(63, 94, 65);
-    border-bottom-left-radius: 10px;
-}
-#buttons > li:nth-child(5) {
-    border-bottom-right-radius: 10px;
 }
 header * li:hover {
     background: rgb(134, 196, 138);
@@ -452,7 +467,26 @@ header #maininfo #otherstuff {
         color: rgb(141, 201, 147);
     }
 }
-
+#socials {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    width: 95%;
+    height: 50px;
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 10px;
+    row-gap: 15px;
+    & img {
+        object-fit: cover;
+        width: calc(100% - 5px);
+        border: none;
+        display: block;
+        filter: drop-shadow(4px 4px 3px rgba(0, 0, 0, 1));
+    }
+    & img:hover {
+        filter: brightness(0.5) contrast(5);
+    }
+}
 header #maininfo #logo {
     display: flex;
     justify-content: space-between;
@@ -479,29 +513,9 @@ header #maininfo #logo {
         border-left: 3px dashed rgb(92, 138, 95);
         border-right: 3px dashed rgb(92, 138, 95);
         position: relative;
-        width: 20%;
+        width: 250px;
         height: 200px;
         background: linear-gradient(rgba(54, 72, 55, 1) 40%, black 100%);
-    }
-    & #socials {
-        display: grid;
-        grid-template-columns: repeat(4, 25%);
-        width: 95%;
-        height: 50px;
-        margin-left: 10px;
-        margin-top: 100px;
-        margin-bottom: 10px;
-        row-gap: 5px;
-        & img {
-            object-fit: cover;
-            width: calc(100% - 5px);
-            border: none;
-            display: block;
-            filter: drop-shadow(4px 4px 3px rgba(0, 0, 0, 1));
-        }
-        & img:hover {
-            filter: brightness(0.5) contrast(5);
-        }
     }
     & h2 {
         display: block;
@@ -596,18 +610,6 @@ li .button:hover {
 }
 /* if screen too small, basically mobile support */
 @media (max-width: 700px) {
-    #pick {
-        padding: 20px 0px;
-        width: 100%;
-    }
-    #pick ul {
-        padding: 0;
-        max-width: calc(100% - 60px);
-        column-gap: 1vw;
-    }
-    #pick button {
-        font-size: 400%;
-    }
     #leftpart.games div {
         & div h1 {
             display: none;
@@ -624,6 +626,13 @@ li .button:hover {
             pointer-events: none;
             mask-image: none;
             width: 100%;
+        }
+    }
+    #sections {
+        display: contents;
+        height: 1000px;
+        & #rightpart {
+            margin-left: 0;
         }
     }
     header #maininfo #logo {
@@ -657,14 +666,7 @@ li .button:hover {
         width: 1000px;
         min-height: 0;
     }
-    body main #sections {
-        display: grid;
-        width: calc(100% - 20px);
-        grid-template-columns: 440px 540px;
-        margin: 0 10px;
-    }
     body main #rightpart {
-        margin-left: 10px;
         & #news {
             height: auto;
             scrollbar-width: none;
@@ -695,7 +697,6 @@ li .button:hover {
     header #maininfo #logo #separator {
         border-left: 3px dashed rgb(92, 138, 95);
         border-right: 3px dashed rgb(92, 138, 95);
-        width: 250px;
         height: 200px;
         & .background {
             width: 220px;
@@ -703,6 +704,12 @@ li .button:hover {
     }
     header #buttons { 
         width: 70%;
+        & li:nth-child(1) {
+            border-bottom-left-radius: 10px;
+        }
+        & li:nth-child(5) {
+            border-bottom-right-radius: 10px;
+        }
     }
     body main #leftpart div div h1 {
         font-size: 300%;

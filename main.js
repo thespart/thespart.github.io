@@ -1,10 +1,11 @@
-const sashkadom = document.querySelector("body header #maininfo #logo #megalogo img");
-const news = document.querySelector("body main #rightpart #news");
+const sashkadom = document.querySelector("#megalogo img");
+const news = document.querySelector("#rightpart #news");
 const newsElement = document.querySelector('body main #rightpart #manipulator li input');
 const rightbutton = document.querySelector('body main #rightpart #manipulator li #right');
 const leftbutton = document.querySelector('body main #rightpart #manipulator li #left');
 const dialogdom = document.querySelector('#quote');
 const triangle = document.querySelector('#triangle');
+const socials = document.querySelector('#socials');
 let delta = 0;
 let prevscroll = 0;
 //let toadd = 0;
@@ -22,12 +23,22 @@ function changetoEmoji(setback) {
         }
     })
 }
-if (innerWidth < 700) {changetoEmoji(false)}
-window.addEventListener('resize', () => {
+function compabilityResize() {
     if (innerWidth > 700) {
         changetoEmoji(true);
-    } else {changetoEmoji(false)}
-})
+        if (window.location.pathname != '/news/') {
+            document.querySelector('#separator #h2bg').insertAdjacentElement('beforebegin', socials);
+        }
+    } else {
+        changetoEmoji(false);
+        if (window.location.pathname != '/news/') {
+            a(document.querySelector('#about'), socials);
+        }
+    }
+}
+// for mobile support
+compabilityResize();
+window.addEventListener('resize', compabilityResize);
 window.addEventListener('scroll', () => {
     const scrollTop = window.scrollY;
     delta = (scrollTop - prevscroll);
@@ -45,10 +56,38 @@ setInterval(() => {
 
 
 //im happy
-const radiusthingy = new URLSearchParams(window.location.search);
-if (radiusthingy.has('radius')) {
-    document.querySelectorAll('*').forEach(el => el.style = `border-radius: ${Number(radiusthingy.get('radius'))}px;`)
-}
+const urlparams = new URLSearchParams(window.location.search);
+document.addEventListener('DOMContentLoaded', () => {
+    if (urlparams.has('radius')) {
+        document.querySelectorAll('*').forEach(el => el.style = `border-radius: ${Number(urlparams.get('radius'))}px;`)
+    }
+    if (urlparams.has('news')) {
+        const newsavailable = document.querySelector('#news');
+        const newstoget = String(urlparams.get('news')).replaceAll('%20', ' ');
+
+        function findnew() {
+            let newfound;
+            newsavailable.childNodes.forEach(el => {
+                if (newstoget == el.querySelector('& > a').textContent) {
+                    newfound = el;
+                }
+            })
+            return newfound;
+        }
+
+        let newsel = findnew();
+        if (newsel === undefined) {
+            currentnews++;
+            changeNews();
+            newsel = findnew();
+            newsel.style.border = '2px solid red';
+            newsel.scrollIntoView();
+        } else {
+            newsel.style.border = '2px solid red';
+            newsel.scrollIntoView();
+        }
+    }
+})
 
 import Quotes from "./quotes.js";
 const openSound = new Audio('/content/openup.mp3');
@@ -137,10 +176,11 @@ function addNews(data) {
     const date = data.d;
 
     const about = a(news,c('div'));
-    const header = a(about, c('h1'));
+    const header = a(about, c('a'));
     a(about, c('div')).classList.add('separator');
     about.id = "about";
     header.textContent = subject;
+    header.href = window.origin + `/news/?news=${subject}`
     about.innerHTML += `<h2>${text}</h2>`
     about.innerHTML += `<h2 id="date">${date}</h2>`
     return about;

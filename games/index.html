@@ -71,7 +71,7 @@
                 & #leftpart {
                     margin: 0 10px;
                 }
-                & #leftpart > div {
+                & #leftpart > div:not(#declarator) {
                     height: 150px;
                     margin-bottom: 10px;
                     border: 3px solid #25382d;
@@ -140,7 +140,10 @@
         </style>
         <main>
             <section class="games" id="leftpart">
-                <h1 id="declarator"> games </h1>
+                <div id="declarator">
+                    <img src="/content/games.svg" alt="">
+                    <h1>games</h1>
+                </div>
                 <div id="physics">
                       <li>
                          <button id="btn1" class="button" type="button">play</button>
